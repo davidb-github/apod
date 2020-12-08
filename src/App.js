@@ -2,6 +2,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { Login } from './components/auth/Login'
 import { Register } from './components/auth/Register'
 import './App.css';
+import { Home } from './Home'
 
 export const App = () => {
   return (
@@ -12,7 +13,8 @@ export const App = () => {
       if (localStorage.getItem("app_user_id")) {
           return (
               <>
-                  //Components that are rendered when the user is authenticated go inside this React fragment
+                  {/* //Components that are rendered when the user is authenticated go inside this React fragment */}
+                  <Home />
               </>
           )
       } else {
