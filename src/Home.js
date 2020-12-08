@@ -1,12 +1,16 @@
 // imports
 import React, { useState, useContext, useEffect } from 'react'
-import { ApodContext } from './components/photos/PhotoProvider'
+import { ApodContext, ApodProvider } from './components/photos/PhotoProvider'
+import { PhotoList } from './components/photos/PhotoList'
 
 // will make call to apod API and display photo
 
 
 export const Home = () => {
    
+<ApodProvider>
+    <PhotoList />
+</ApodProvider>
     
     return (
     <> 
