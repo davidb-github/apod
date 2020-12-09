@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from "react"
 import { ApodContext } from "./PhotoProvider"
 
-console.log("here in PhotoList.js")
 
-
-export const PhotoList = () => {
+export const PhotoDetail = () => {
     console.log("PhotoList....")
     
-    // This state changes when `getLocations()` is invoked below
+    // This state changes when `getApod()` is invoked below
     const { apod, getApod } = useContext(ApodContext)
 
   
