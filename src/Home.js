@@ -10,8 +10,12 @@ export const Home = () => {
 
     return (
         <>
-            <h1>Welcome to Astronomy Photo of the Day</h1>
+            <main>
+            <h1>Astronomy Picture of the Day</h1>
             <p>build additional home components</p>
+
+            </main>
+            
             <ApodProvider>
                 <PhotoDetail />
             </ApodProvider>
