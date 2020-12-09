@@ -1,5 +1,6 @@
 // imports
-import React, { useState, useContext, useEffect } from 'react'
+import React from 'react'
+// , { useState, useContext, useEffect } 
 
 
 // will make call to apod API and display photo
