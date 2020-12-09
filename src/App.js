@@ -2,7 +2,9 @@ import { Route, Redirect } from 'react-router-dom'
 import { Login } from './components/auth/Login'
 import { Register } from './components/auth/Register'
 import './App.css';
-import { Home } from './Home'
+// import { Home } from './Home'
+import { NavBar } from './components/nav/NavBar';
+import { ApplicationViews } from './components/ApplicationView';
 
 export const App = () => {
   return (
@@ -14,7 +16,10 @@ export const App = () => {
           return (
               <>
                   {/* //Components that are rendered when the user is authenticated go inside this React fragment */}
-                  <Home />
+                  {/* <Home /> */}
+                  {/* navbar & appviews.js */}
+                  <NavBar />
+                  <ApplicationViews />
               </>
           )
       } else {
