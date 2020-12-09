@@ -5,6 +5,8 @@ console.log("here in PhotoList.js")
 
 
 export const PhotoList = () => {
+    console.log("PhotoList....")
+    
     // This state changes when `getLocations()` is invoked below
     const { apod, getApod } = useContext(ApodContext)
 
@@ -15,22 +17,22 @@ export const PhotoList = () => {
         then gets the data, then re-renders.
     */
     useEffect( () => {
-        console.log("PhotoList: Initial render before data")
+        console.log("useEffect state:", apod)
         getApod()
-    }, {})
+    }, [] )
 
-    /*
-        This effect is solely for learning purposes. The effect
-        it is responding to is that the location state changed.
-    */
-    useEffect(() => {
-        console.log("PhotoList: Location state changed")
-        console.log(apod)
-    }, [apod])
 
     return (
         <div className="apod">
-        {
+            {
+                console.log("PhotoList executed and we are inside the return", apod.title) && <h1>Hello World</h1>
+
+            }
+        </div>
+    )
+}
+
+{/* {
             apod.copyright,
             apod.date,
             apod.explanation,
@@ -38,9 +40,5 @@ export const PhotoList = () => {
             apod.media_type,
             apod.service_version,
             apod.title,
-            apod.title,
             apod.url
-        }
-        </div>
-    )
-}
+        } */}

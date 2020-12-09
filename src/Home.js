@@ -7,17 +7,17 @@ import { PhotoList } from './components/photos/PhotoList'
 
 
 export const Home = () => {
-   
-<ApodProvider>
-    <PhotoList />
-</ApodProvider>
-    
+
+
+
     return (
-    <> 
-    <h1>Welcome to Astronomy Photo of the Day</h1>
-    <p>build additional home components</p>
-    
-    </>
-    )   
+        <>
+            <h1>Welcome to Astronomy Photo of the Day</h1>
+            <p>build additional home components</p>
+            <ApodProvider>
+                <PhotoList />
+
+        </>
+    )
 }
 
