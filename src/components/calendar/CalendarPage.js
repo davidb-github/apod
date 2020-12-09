@@ -1,5 +1,6 @@
 // imports
-import React, { useState, useContext, useEffect } from 'react'
+import React from 'react'
+// , { useState, useContext, useEffect } 
 // import { ApodContext, ApodProvider } from './components/photos/PhotoProvider'
 // import { PhotoDetail } from './components/photos/PhotoDetail'
 

@@ -3,17 +3,12 @@ import { ApodContext } from "./PhotoProvider"
 
 
 export const PhotoDetail = () => {
-    console.log("PhotoList....")
+    // console.log("PhotoList....")
 
     // This state changes when `getApod()` is invoked below
     const { apod, getApod } = useContext(ApodContext)
 
 
-    /*
-        What's the effect this is reponding to? Component was
-        "mounted" to the DOM. React renders blank HTML first,
-        then gets the data, then re-renders.
-    */
     useEffect(() => {
         console.log("useEffect state:", apod)
         getApod()
@@ -27,14 +22,14 @@ export const PhotoDetail = () => {
                     <article className="apod__title">
                         <p>Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.</p>
                     </article>
-                    <img href={apod.hdrurl}></img>
+                    <img src={apod.hdrurl} alt="apod"></img>
                     <p>img URL {apod.hdrurl}: </p>
                     <p>
 
                         {/* copyright: {apod.copyright} */}
                         date: {apod.date}
                         explanation: {apod.explanation}
-                        
+
                         hdrurl: {apod.hdrurl}
                         media_type: {apod.media_type}
                         service_version: {apod.service_version}
