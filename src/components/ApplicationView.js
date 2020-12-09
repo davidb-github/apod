@@ -2,10 +2,12 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { ApodProvider } from "./photos/PhotoProvider"
 import { Home } from "../Home"
-// calendar imports
+
 import { Calendar } from './calendar/CalendarPage'
-// favorite import
+
 import { Favorites } from './favorites/FavoritesPage'
+
+import { Categories } from "./categories/CategoryPage"
 
 export const ApplicationViews = (props) => {
     return (
@@ -18,15 +20,23 @@ export const ApplicationViews = (props) => {
             </ApodProvider>
 
             <ApodProvider>
-                {/* Render the calendarpage when http://localhost:3000/calendar */}
+                {/* Render the calendar page when http://localhost:3000/calendar */}
                 <Route path="/calendar">
                     <Calendar />
                 </Route>
             </ApodProvider>
 
             <ApodProvider>
-                {/* Render the calendarpage when http://localhost:3000/calendar */}
+                {/* Render the favorites page when http://localhost:3000/favorites */}
                 <Route path="/favorites">
+                    <Favorites />
+                </Route>
+            </ApodProvider>
+
+            <ApodProvider>
+                {/* Render the categories elements on the favorites page when http://localhost:3000/categories */}
+                <Route path="/categories">
+                    <Categories />
                     <Favorites />
                 </Route>
             </ApodProvider>
