@@ -9,14 +9,14 @@ export const ApplicationViews = (props) => {
     return (
         <>
             <ApodProvider>
-                {/* Render the location list when http://localhost:3000/ */}
+                {/* Render the Home page when http://localhost:3000/ */}
                 <Route exact path="/">
                     <Home />
                 </Route>
             </ApodProvider>
 
             <ApodProvider>
-                {/* Render the location list when http://localhost:3000/ */}
+                {/* Render the calendarpage when http://localhost:3000/calendar */}
                 <Route path="/calendar">
                     <Calendar />
                 </Route>
