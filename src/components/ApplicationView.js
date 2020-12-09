@@ -4,6 +4,8 @@ import { ApodProvider } from "./photos/PhotoProvider"
 import { Home } from "../Home"
 // calendar imports
 import { Calendar } from './calendar/CalendarPage'
+// favorite import
+import { Favorites } from './favorites/FavoritesPage'
 
 export const ApplicationViews = (props) => {
     return (
@@ -19,6 +21,13 @@ export const ApplicationViews = (props) => {
                 {/* Render the calendarpage when http://localhost:3000/calendar */}
                 <Route path="/calendar">
                     <Calendar />
+                </Route>
+            </ApodProvider>
+
+            <ApodProvider>
+                {/* Render the calendarpage when http://localhost:3000/calendar */}
+                <Route path="/favorites">
+                    <Favorites />
                 </Route>
             </ApodProvider>
 
