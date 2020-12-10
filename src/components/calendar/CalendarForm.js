@@ -15,6 +15,7 @@ export const CalendarForm = () => {
                 <article>
                     <h1>Welcome to CalendarForm.js</h1>
                     <div>
+                        {/* calendar input */}
                         <label for="start">Select a date:</label>
                         <input type="date" id="start" name="APOD Date"
                             value="2020-12-10"
@@ -22,6 +23,7 @@ export const CalendarForm = () => {
                     </div>
 
                     <div>
+                        {/* tag drop-down */}
                         <label for="tag-select">Choose a tag:</label>
 
                         <select name="tags" id="tag-select">
@@ -35,11 +37,33 @@ export const CalendarForm = () => {
                     </div>
 
                     <div>
+                        {/* Text box */}
+                        <label for="apod-note">Add Note: </label>
 
-                        <p>Add tag dropdown</p>
-                        <p>Add Note button</p>
-                        <p>Add text box</p>
-                        <p>Add save button</p>
+                        <textarea id="note" name="note"
+                            rows="5" cols="33">
+                            note text...
+                        </textarea>
+                    </div>
+
+                    <div>
+                        {/* Add Note button */}
+                        <button
+                            type="button">
+                            Save Note
+                        </button>
+                    </div>
+
+                    <div>
+                        {/* Save Photo to favorites */}
+                        <button
+                            type="button">
+                            Save to Favorites
+                        </button>
+                    </div>
+
+                    <div>
+
                     </div>
 
                     <div>
