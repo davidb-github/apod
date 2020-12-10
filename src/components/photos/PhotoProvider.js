@@ -29,24 +29,24 @@ export const ApodProvider = (props) => {
     }
 
     // Add addPhoto component
-    // const addPhoto = () => {
-    //     return fetch('http://localhost:8088/photos', {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(photo)
-    //     })
-    //         .then(getPhotos)
-    // }
-
+    const addPhoto = (photo) => {
+        return fetch('http://localhost:8088/photos', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(photo)
+        })
+            .then(getPhotos)
+    }
 
 
     return (
         <ApodContext.Provider value={
             {
                 apod  , setApod  , getApod,
-                photos, setPhotos, getPhotos
+                photos, setPhotos, getPhotos,
+                addPhoto           
             }
         }>
             {props.children}
