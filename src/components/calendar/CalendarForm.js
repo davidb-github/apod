@@ -41,13 +41,13 @@ export const CalendarForm = () => {
                         {/* calendar input */}
                         <label for="start">Select a date:</label>
                         <input type="date" id="start" name="APOD Date"
-                            value="2020-12-10"
+                            defaultValue="2020-12-10"
                             min="2018-01-01" max="2020-12-31"></input>
                     </div>
 
                     <div>
                         {/* tag drop-down */}
-                        <label for="tag-select">Choose a tag:</label>
+                        <label htmlFor="tag-select">Choose a tag:</label>
 
                         <select name="tags" id="tag-select">
                             <option value="0">--Please choose an option--</option>
@@ -59,11 +59,10 @@ export const CalendarForm = () => {
 
                     <div>
                         {/* Text box */}
-                        <label for="apod-note">Add Note: </label>
+                        <label htmlFor="apod-note">Add Note: </label>
 
                         <textarea id="note" name="note"
                             rows="5" cols="33">
-                            note text...
                         </textarea>
                     </div>
 
