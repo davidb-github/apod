@@ -25,6 +25,7 @@ export const PhotoDetail = () => {
                     </div>
                     <div>
                         <img src={apod.url} alt="apod"></img>
+                        {console.log(apod.url)}
                     </div>
                     <div>
                         <p>Description: {apod.explanation}</p>
@@ -35,24 +36,3 @@ export const PhotoDetail = () => {
         </div >
     )
 }
-
-{/* <section className="apod__photo-details">
-                    <article className="apod__title">
-                        <p>Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.</p>
-                    </article>
-                    <img src={apod.hdrurl} alt="apod"></img>
-                    <p>img URL {apod.hdrurl}: </p>
-                    <p>
-
-                        {/* copyright: {apod.copyright} */}
-                        // date: {apod.date}
-                        // explanation: {apod.explanation}
-
-                        // hdrurl: {apod.hdrurl}
-                        // media_type: {apod.media_type}
-                        // service_version: {apod.service_version}
-                        // title: {apod.title}
-                //         URL: {apod.url}
-                //     </p>
-
-                // </section> */}
