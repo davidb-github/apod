@@ -1,6 +1,7 @@
 //create empty array, fetch the API information, then make copy of that empty array.
 import React, { useState } from "react"
-// import { keys } from "../../Settings.js"
+import { keys } from "../../Settings.js"
+
 
 
 export const ApodContext = React.createContext()
@@ -10,7 +11,7 @@ export const ApodProvider = (props) => {
 
     
     const getApod = () => {
-        return fetch("https://api.nasa.gov/planetary/apod?api_key=Y2aNOUmlb87yeRVuHaUBfwf0L25jF5H6rVqEO6bO")
+        return fetch(`https://api.nasa.gov/planetary/apod?api_key=${keys.apodKey}`)
             .then((response) => response.json())
             .then(setApod)
     }
