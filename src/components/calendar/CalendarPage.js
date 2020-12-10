@@ -1,25 +1,24 @@
 // imports
 import React from 'react'
+import { CalendarForm } from './CalendarForm'
 // , { useState, useContext, useEffect } 
-// import { ApodContext, ApodProvider } from './components/photos/PhotoProvider'
+import { ApodContext, ApodProvider } from '../photos/PhotoProvider'
 // import { PhotoDetail } from './components/photos/PhotoDetail'
 
 // will make call to apod API and display photo
 
 
-export const Calendar = () => {
+export const CalendarPage = () => {
 
     return (
         <>
             <main>
-            <h1>Welcome to CalendarPage.js</h1>
-            <p>build additional home components</p>
-
+                <h1>Welcome to CalendarPage.js</h1>
+                <p>Astronomy Photo of the Day: Select a date to see a currated photo.</p>
             </main>
-            {/* call calendar form here later */}
-            {/* <ApodProvider>
-                <PhotoDetail />
-            </ApodProvider> */}
+           <ApodProvider>
+                <CalendarForm />
+            </ApodProvider>
 
         </>
     )

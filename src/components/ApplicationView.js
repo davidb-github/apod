@@ -3,7 +3,7 @@ import { Route } from "react-router-dom"
 import { ApodProvider } from "./photos/PhotoProvider"
 import { Home } from "../Home"
 
-import { Calendar } from './calendar/CalendarPage'
+import { CalendarPage } from './calendar/CalendarPage'
 
 import { Favorites } from './favorites/FavoritesPage'
 
@@ -22,7 +22,7 @@ export const ApplicationViews = (props) => {
             <ApodProvider>
                 {/* Render the calendar page when http://localhost:3000/calendar */}
                 <Route path="/calendar">
-                    <Calendar />
+                    <CalendarPage />
                 </Route>
             </ApodProvider>
 

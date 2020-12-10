@@ -3,7 +3,7 @@ import React from 'react'
 import { ApodProvider } from './components/photos/PhotoProvider'
 import { PhotoDetail } from './components/photos/PhotoDetail'
 
-// will make call to apod API and display photo
+// to-do: for logout - customerId: parseInt(localStorage.getItem('app_user_id'))
 
 
 export const Home = () => {

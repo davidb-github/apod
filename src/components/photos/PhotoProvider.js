@@ -5,7 +5,7 @@ import { keys } from "../../Settings.js"
 
 
 export const ApodContext = React.createContext()
-// should I use empty array or object since the API returns a single object per given date
+
 export const ApodProvider = (props) => {
     const [apod, setApod] = useState({})
 
