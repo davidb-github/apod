@@ -9,6 +9,21 @@ import React from 'react'
 
 export const CalendarForm = () => {
 
+    // useContext for any data
+
+    // useRef for any data
+
+    // useEffect for tags? anything else?
+
+    // function def for savetoFavs
+
+
+
+
+
+
+
+
     return (
         <>
             <main>
@@ -57,6 +72,8 @@ export const CalendarForm = () => {
                     <div>
                         {/* Save Photo to favorites */}
                         <button
+                        // wire up OnClick to call savetoFavs
+                        // do I need preventDefault behavior or not?
                             type="button">
                             Save to Favorites
                         </button>
