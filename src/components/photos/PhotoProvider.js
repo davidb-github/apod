@@ -7,22 +7,46 @@ import { keys } from "../../Settings.js"
 export const ApodContext = React.createContext()
 
 export const ApodProvider = (props) => {
+    // set state for ext API data
     const [apod, setApod] = useState({})
 
-    
+    // set state for local photo data
+    const [photos, setPhotos] = useState([])
+
+
     const getApod = () => {
         return fetch(`https://api.nasa.gov/planetary/apod?api_key=${keys.apodKey}`)
             .then((response) => response.json())
             .then(setApod)
     }
 
-    // Add create call to local json-server
     
+    const getPhotos = () => {
+        return fetch("http://localhost:8088/photos")
+            .then(res => res.json())
+            // .then(parsedPhotos => setPhotos(parsedPhotos) )
+            .then(setPhotos)
+    }
+
+    // Add addPhoto component
+    // const addPhoto = () => {
+    //     return fetch('http://localhost:8088/photos', {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(photo)
+    //     })
+    //         .then(getPhotos)
+    // }
+
+
 
     return (
         <ApodContext.Provider value={
             {
-                apod, setApod, getApod
+                apod  , setApod  , getApod,
+                photos, setPhotos, getPhotos
             }
         }>
             {props.children}
