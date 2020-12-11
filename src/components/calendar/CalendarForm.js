@@ -39,7 +39,7 @@ export const CalendarForm = () => {
                     <h1>Welcome to CalendarForm.js</h1>
                     <div>
                         {/* calendar input */}
-                        <label for="start">Select a date:</label>
+                        <label htmlFor="start">Select a date:</label>
                         <input type="date" id="start" name="APOD Date"
                             defaultValue="2020-12-10"
                             min="2018-01-01" max="2020-12-31"></input>
