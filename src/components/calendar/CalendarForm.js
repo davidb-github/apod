@@ -1,36 +1,56 @@
 // imports
-import React, { useContext, useEffect } from 'react'
+import { getDefaultNormalizer, getNodeText } from '@testing-library/react'
+import React, { useContext, useEffect, useState } from 'react'
+import { ApodContext } from "../photos/PhotoProvider"
 import { TagContext } from '../tags/TagProvider'
 
-// , { useState, useContext, useEffect } 
+
+// , { useState
 // import { ApodContext, ApodProvider } from './components/photos/PhotoProvider'
 // import { PhotoDetail } from './components/photos/PhotoDetail'
 
 // will make call to apod API and display photo
+// add usestatee keep track of date
+
 
 
 export const CalendarForm = () => {
 
-    // useContext for any data
+    const [date, setDate] = useState(0)
+
+
+
     // onMount loads up context, runs jsx, skips useEffects
     const { tags, getTags } = useContext(TagContext)
 
-    // useRef for any data
-    // const tag = useRef(null)
+    const { apod, getApod } = useContext(ApodContext)
+    const {apodByDate, getApodByDate} = useContext(ApodContext) 
 
-    // useEffect for tags? anything else?
+    // onMount
     useEffect(() => {
         getTags()
     }, [])
 
     useEffect(() => {
+        getApod()
+    }, [])
+
+    // 
+    useEffect(() => {
         console.log("useEffect state:", tags)
     }, [tags])
 
-    // function def for savetoFavs
+    // useEffect to watch datestate - call getApod by date
+    useEffect(() => {
+        console.log(date)
+        getApodByDate(date)
+    }, [date])
 
-
-
+    // extract date from OnChange event and pass to setDate
+    const handleChange = (e) => {
+        let date = e.target.value
+        setDate(date)
+    }
 
     return (
         <>
@@ -39,10 +59,11 @@ export const CalendarForm = () => {
                     <h1>Welcome to CalendarForm.js</h1>
                     <div>
                         {/* calendar input */}
-                        <label htmlFor="start">Select a date:</label>
-                        <input type="date" id="start" name="APOD Date"
-                            defaultValue="2020-12-10"
-                            min="2018-01-01" max="2020-12-31"></input>
+                        <label htmlFor="date">Select a date:</label>
+
+                        <input type="date" id="date" name="APOD Date" onChange={handleChange}>
+
+                        </input>
                     </div>
 
                     <div>
@@ -88,11 +109,27 @@ export const CalendarForm = () => {
 
                     </div>
 
-                    <div>
-                        {/* Photo for selected day goes in this div */}
-                    </div>
+                    {/* Photo for selected day goes in this div */}
+                    <div className="apod">
+                        {
+                            <section>
+                                <div>
+                                    <p>Title: {apodByDate.title}</p>
+                                    <p>Date : {apodByDate.date}</p>
+                                </div>
+                                <div>
+                                    <img src={apodByDate.url} alt="apod"></img>
+                                    {console.log(apodByDate.url)}
+                                </div>
+                                <div>
+                                    <p>Description: {apodByDate.explanation}</p>
+                                </div>
+                            </section>
+                            // console.log("PhotoList executed and we are inside the return", apod.title) && <h1>Hello World</h1>
+                        }
+                    </div >
                 </article>
-            </main>
+        </main>
         </>
     )
 }
