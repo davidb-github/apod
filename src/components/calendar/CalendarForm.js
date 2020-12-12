@@ -16,15 +16,18 @@ import { TagContext } from '../tags/TagProvider'
 
 export const CalendarForm = () => {
 
-    const [date, setDate] = useState(0)
-
-
+    const [date, setDate] = useState("")
+    const [selectedTag, setSelectedTag] = useState("")
+    const [noteText, setNoteText] = useState("")
 
     // onMount loads up context, runs jsx, skips useEffects
     const { tags, getTags } = useContext(TagContext)
-
     const { apod, getApod } = useContext(ApodContext)
-    const {apodByDate, getApodByDate} = useContext(ApodContext) 
+
+    const {apodByDate, getApodByDate} = useContext(ApodContext)
+    const {photo, addPhoto} = useContext(ApodContext)
+    const {tag, addPhotoTag} = useContext(TagContext)
+
 
     // onMount
     useEffect(() => {
@@ -52,6 +55,31 @@ export const CalendarForm = () => {
         setDate(date)
     }
 
+    const createPhotoObject = () => {
+        const userId = localStorage.getItem("app_user_id")
+
+        return {
+            userId: userId,
+            noteText: noteText,
+            title:      apodByDate.title,
+            imageUrl:   apodByDate.url,
+            date:   date
+        }
+        // console.log
+    }
+
+
+    const handleSaveFavs = () => {
+        console.log(ApodContext)
+        addPhoto(createPhotoObject())
+        .then(response => console.log(response)).catch(console.log)
+        
+        // ApodContext.addPhotoTag()
+        // .then().catch(console.log)
+
+    }
+
+
     return (
         <>
             <main>
@@ -70,7 +98,7 @@ export const CalendarForm = () => {
                         {/* tag drop-down */}
                         <label htmlFor="tag-select">Choose a tag:</label>
 
-                        <select name="tags" id="tag-select">
+                        <select name="tags" id="tag-select" onChange={(e) =>{setSelectedTag(e.target.value)}}>
                             <option value="0">--Please choose an option--</option>
                             ${tags.map(tag => (<option key={tag.id} value={tag.id}>
                                 {tag.tag}
@@ -83,21 +111,14 @@ export const CalendarForm = () => {
                         <label htmlFor="apod-note">Add Note: </label>
 
                         <textarea id="note" name="note"
-                            rows="5" cols="33">
+                            rows="5" cols="33" onChange={(e) => {setNoteText(e.target.value)}}>
                         </textarea>
                     </div>
 
-                    <div>
-                        {/* Add Note button */}
-                        <button
-                            type="button">
-                            Save Note
-                        </button>
-                    </div>
-
+                    
                     <div>
                         {/* Save Photo to favorites */}
-                        <button
+                        <button onClick={ handleSaveFavs }
                             // wire up OnClick to call savetoFavs
                             // do I need preventDefault behavior or not?
                             type="button">
