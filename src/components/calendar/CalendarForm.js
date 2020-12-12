@@ -68,11 +68,15 @@ export const CalendarForm = () => {
         // console.log
     }
 
+    // const createTagObject = () => {
+    //     photoId: 
+    // }
+
 
     const handleSaveFavs = () => {
         console.log(ApodContext)
         addPhoto(createPhotoObject())
-        .then(response => console.log(response)).catch(console.log)
+        .then(response => addPhotoTag({photoId: response.id, tagId: selectedTag })).catch(console.log)
         
         // ApodContext.addPhotoTag()
         // .then().catch(console.log)

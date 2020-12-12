@@ -45,7 +45,11 @@ export const ApodProvider = (props) => {
             },
             body: JSON.stringify(photo)
         })
-            .then(getPhotos)
+            // .then(getPhotos)
+            .then((response) => {
+                getPhotos()
+                return response.json()
+            })
     }
 
 
