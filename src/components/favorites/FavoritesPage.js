@@ -6,6 +6,7 @@ import React, {useContext} from 'react'
 // access context
 // access that context
 // map through photos and place on DOM
+// additional components 
 
 // will make call to apod API and display photo
 

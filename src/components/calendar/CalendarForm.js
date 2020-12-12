@@ -5,15 +5,6 @@ import { ApodContext } from "../photos/PhotoProvider"
 import { TagContext } from '../tags/TagProvider'
 
 
-// , { useState
-// import { ApodContext, ApodProvider } from './components/photos/PhotoProvider'
-// import { PhotoDetail } from './components/photos/PhotoDetail'
-
-// will make call to apod API and display photo
-// add usestatee keep track of date
-
-
-
 export const CalendarForm = () => {
 
     const [date, setDate] = useState("")
