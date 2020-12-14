@@ -2,8 +2,9 @@
 import React, {useContext} from 'react'
 // , { useState, useContext, useEffect }
 
-
-// access context
+// do these steps in favoriteslist.js
+// useContext - one for get photos and one for photos that are gotten
+// useEffect to call getPhotos
 // access that context
 // map through photos and place on DOM
 // additional components 
