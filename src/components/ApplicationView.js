@@ -2,11 +2,8 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { ApodProvider } from "./photos/PhotoProvider"
 import { Home } from "../Home"
-
 import { CalendarPage } from './calendar/CalendarPage'
-
 import { Favorites } from './favorites/FavoritesPage'
-
 import { Categories } from "./categories/CategoryPage"
 
 export const ApplicationViews = (props) => {
@@ -15,6 +12,12 @@ export const ApplicationViews = (props) => {
             <ApodProvider>
                 {/* Render the Home page when http://localhost:3000/ */}
                 <Route exact path="/">
+                    <button onClick={() => {
+                        localStorage.clear();
+                        // props.history.push("login")
+                    }}>
+                     Log Out   
+                    </button>
                     <Home />
                 </Route>
             </ApodProvider>

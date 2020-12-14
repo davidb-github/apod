@@ -1,15 +1,8 @@
 // imports
 import React, {useContext} from 'react'
+import { ApodProvider } from '../photos/PhotoProvider'
+import { FavoritesList } from './FavoritesList'
 // , { useState, useContext, useEffect }
-
-// do these steps in favoriteslist.js
-// useContext - one for get photos and one for photos that are gotten
-// useEffect to call getPhotos
-// access that context
-// map through photos and place on DOM
-// additional components 
-
-// will make call to apod API and display photo
 
 
 export const Favorites = () => {
@@ -18,14 +11,12 @@ export const Favorites = () => {
         <>
             <main>
             <h1>Welcome to FavoitesPage.js</h1>
-            <p>build additional home components</p>
+            <p>build additional favpage components</p>
 
             </main>
-            {/* call FavoritesList form here later */}
-            {/* <ApodProvider>
+            <ApodProvider>
                 <FavoritesList />
-            </ApodProvider> */}
-
+            </ApodProvider>
         </>
     )
 }

@@ -46,6 +46,7 @@ export const ApodProvider = (props) => {
             body: JSON.stringify(photo)
         })
             // .then(getPhotos)
+            // get response from json-server api so we can pull out the photo id for user 
             .then((response) => {
                 getPhotos()
                 return response.json()
