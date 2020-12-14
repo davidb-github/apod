@@ -9,6 +9,8 @@ import { TagProvider } from '../tags/TagProvider'
 // will make call to apod API and display photo
 
 
+
+
 export const CalendarPage = () => {
 
     return (
@@ -18,9 +20,9 @@ export const CalendarPage = () => {
                 <p>Astronomy Photo of the Day: Select a date to see a currated photo.</p>
             </main>
             <TagProvider>
-            <ApodProvider>
+                <ApodProvider>
                     <CalendarForm />
-            </ApodProvider>
+                </ApodProvider>
             </TagProvider>
 
         </>

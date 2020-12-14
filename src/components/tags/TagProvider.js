@@ -14,12 +14,25 @@ export const TagProvider = (props) => {
             .then(setTags)
     }
 
+    // add addTag 
+    const addPhotoTag = (photoTag) => {
+        return fetch('http://localhost:8088/photoTags', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(photoTag)
+        })
+            .then(getTags)
+    }
+
       
 
     return (
         <TagContext.Provider value={
             {
-                tags, setTags, getTags
+                tags, setTags, getTags,
+                addPhotoTag
             }
         }>
             {props.children}
