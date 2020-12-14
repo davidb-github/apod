@@ -29,13 +29,25 @@ export const FavoritesList = () => {
             <main>
                 <h1>Welcome to FavoitesList.js</h1>
                 <p>build additional FavoritesList components</p>
-                <div>
-                    {photos.map(photo => <p key={photo.id} value={photo.id}>{photo.title}</p> )}
+                <section>
+                    {photos.map(photo => <div key={photo.id} value={photo.id}>
+                        <p key={photo.id}>
+                            Title: {photo.title}{"\n"}
+                            <img src={photo.imageUrl} alt="A favorited photo"></img>
+                        </p>
+
+                    </div>)}
+
+
+                    {/* <div>
+                        <img src={apodByDate.url} alt="apod"></img>
+                        {console.log(apodByDate.url)}
+                    </div> */}
 
                     {/* ${tags.map(tag => (<option 
                         key={tag.id} value={tag.id}> {tag.tag} 
                         </option>))} */}
-                </div>
+                </section>
             </main>
         </>
     )
