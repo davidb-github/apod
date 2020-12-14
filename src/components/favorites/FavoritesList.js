@@ -35,18 +35,7 @@ export const FavoritesList = () => {
                             Title: {photo.title}{"\n"}
                             <img src={photo.imageUrl} alt="A favorited photo"></img>
                         </p>
-
                     </div>)}
-
-
-                    {/* <div>
-                        <img src={apodByDate.url} alt="apod"></img>
-                        {console.log(apodByDate.url)}
-                    </div> */}
-
-                    {/* ${tags.map(tag => (<option 
-                        key={tag.id} value={tag.id}> {tag.tag} 
-                        </option>))} */}
                 </section>
             </main>
         </>
