@@ -11,7 +11,7 @@ export const Favorites = () => {
         <>
             <main>
             <h1>Welcome to FavoitesPage.js</h1>
-            <p>build additional home components</p>
+            <p>build additional favpage components</p>
 
             </main>
             <ApodProvider>
