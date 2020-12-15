@@ -5,6 +5,7 @@ import { Home } from "../Home"
 import { CalendarPage } from './calendar/CalendarPage'
 import { Favorites } from './favorites/FavoritesPage'
 import { Categories } from "./categories/CategoryPage"
+import { TagProvider } from './tags/TagProvider'
 
 export const ApplicationViews = (props) => {
     return (
@@ -16,7 +17,7 @@ export const ApplicationViews = (props) => {
                         localStorage.clear();
                         // props.history.push("login")
                     }}>
-                     Log Out   
+                        Log Out
                     </button>
                     <Home />
                 </Route>
@@ -37,13 +38,14 @@ export const ApplicationViews = (props) => {
             </ApodProvider>
 
             <ApodProvider>
-                {/* Render the categories elements on the favorites page when http://localhost:3000/categories */}
-                <Route path="/categories">
-                    <Categories />
-                    <Favorites />
-                </Route>
+                <TagProvider>
+                    {/* Render the categories elements on the favorites page when http://localhost:3000/categories */}
+                    <Route path="/categories">
+                        <Categories />
+                        <Favorites />
+                    </Route>
+                </TagProvider>
             </ApodProvider>
-
         </>
     )
 }
