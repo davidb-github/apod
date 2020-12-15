@@ -16,7 +16,7 @@ import { ApodContext } from '../photos/PhotoProvider'
 
 export const FavoritesList = () => {
 
-    const { photos, getPhotos } = useContext(ApodContext)
+    const { photos, getPhotos, deletePhoto } = useContext(ApodContext)
     // const { gotPhotos, getGotPhotos } = useContext(ApodContext)
 
     // store id for current user
@@ -42,10 +42,14 @@ export const FavoritesList = () => {
                                         Title: {photo.title}{"\n"}
                                         <img src={photo.imageUrl} alt="A favorited photo"></img>
                                     </p>
+                                    <button 
+                                        onClick={ () => {
+                                            deletePhoto(photo.id)
+                                        }}>
+                                        
+                                    Delete Photo</button>
                                 </div>
                             </>
-
-
                     })}
                 </section>
             </main>
