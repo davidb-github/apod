@@ -11,7 +11,7 @@ import { TagContext } from '../tags/TagProvider'
 
 export const Categories = () => {
 
-    const [selectedTag, setSelectedTag] = useState("")
+    const [selectedTag, setSelectedTag] = useState(0)
 
     const { tags, getTags } = useContext(TagContext)
 
@@ -19,6 +19,9 @@ export const Categories = () => {
      useEffect(() => {
         getTags()
     }, [])
+
+    // useEffect for seleted tag
+    // filter photos when it changes
 
     return (
         <>
