@@ -25,8 +25,8 @@ export const FavoritesList = () => {
                         if (photo.userId === currentUser)
 
                             return <>
-                                <div key={photo.id} value={photo.id}>
-                                    <p key={photo.id}>
+                                <div>
+                                    <p key={photo.id} value={photo.id}>
                                         Title: {photo.title}{"\n"}
                                         <img src={photo.imageUrl} alt="A favorited photo"></img>
                                     </p>
@@ -34,7 +34,6 @@ export const FavoritesList = () => {
                                         onClick={() => {
                                             deletePhoto(photo.id)
                                         }}>
-
                                         Delete Photo</button>
                                 </div>
                             </>
