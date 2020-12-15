@@ -2,12 +2,6 @@
 import { useState, useContext, useEffect } from "react"
 import React from 'react'
 import { TagContext } from '../tags/TagProvider'
-// , { useState, useContext, useEffect } 
-
-
-
-// will make call to apod API and display photo
-
 
 export const Categories = () => {
 
@@ -20,8 +14,11 @@ export const Categories = () => {
         getTags()
     }, [])
 
-    // useEffect for seleted tag
+    // useEffect()
+    // useEffect for seletedTag
     // filter photos when it changes
+    // copy section from favlist to here
+    // 
 
     return (
         <>
@@ -41,11 +38,6 @@ export const Categories = () => {
                     </div>
 
             </main>
-            {/* call FavoritesList form here later */}
-            {/* <ApodProvider>
-                <FavoritesList />
-            </ApodProvider> */}
-
         </>
     )
 }

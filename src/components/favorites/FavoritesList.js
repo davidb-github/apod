@@ -43,10 +43,3 @@ export const FavoritesList = () => {
         </>
     )
 }
-
-{/* {photos.map(photo => <div key={photo.id} value={photo.id}>
-                        <p key={photo.id}>
-                            Title: {photo.title}{"\n"}
-                            <img src={photo.imageUrl} alt="A favorited photo"></img>
-                        </p>
-                    </div>)} */}
