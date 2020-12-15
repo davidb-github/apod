@@ -53,13 +53,23 @@ export const ApodProvider = (props) => {
             })
     }
 
+    const deletePhoto = photoId => {
+        return fetch(`http://localhost:8088/photos/${photoId}`, {
+            method: "DELETE"
+        })
+            .then(getPhotos)
+    }
+
+
+
 
     return (
         <ApodContext.Provider value={
             {
                 apod  , setApod  , getApod,
                 photos, setPhotos, getPhotos,
-                addPhoto, getApodByDate, apodByDate          
+                addPhoto, getApodByDate, apodByDate,
+                deletePhoto          
             }
         }>
             {props.children}

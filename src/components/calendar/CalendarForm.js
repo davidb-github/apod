@@ -47,7 +47,7 @@ export const CalendarForm = () => {
     }
 
     const createPhotoObject = () => {
-        const userId = localStorage.getItem("app_user_id")
+        const userId = parseInt(localStorage.getItem("app_user_id"))
 
         return {
             userId: userId,
@@ -62,7 +62,7 @@ export const CalendarForm = () => {
     const handleSaveFavs = () => {
         console.log(ApodContext)
         addPhoto(createPhotoObject())
-        .then(response => addPhotoTag({photoId: response.id, tagId: selectedTag })).catch(console.log)        
+        .then(response => addPhotoTag({photoId: response.id, tagId: parseInt(selectedTag) })).catch(console.log)        
     }
 
 
