@@ -16,9 +16,11 @@ import { ApodContext } from '../photos/PhotoProvider'
 
 export const FavoritesList = () => {
 
-
     const { photos, getPhotos } = useContext(ApodContext)
     // const { gotPhotos, getGotPhotos } = useContext(ApodContext)
+
+    // store id for current user
+    const currentUser = parseInt(localStorage.getItem("app_user_id"))
 
     useEffect(() => {
         getPhotos()
@@ -30,14 +32,30 @@ export const FavoritesList = () => {
                 <h1>Welcome to FavoitesList.js</h1>
                 <p>build additional FavoritesList components</p>
                 <section>
-                    {photos.map(photo => <div key={photo.id} value={photo.id}>
-                        <p key={photo.id}>
-                            Title: {photo.title}{"\n"}
-                            <img src={photo.imageUrl} alt="A favorited photo"></img>
-                        </p>
-                    </div>)}
+                    {photos.map(photo => {
+                        // debugger
+                        if (photo.userId === currentUser)
+
+                            return <>
+                                <div key={photo.id} value={photo.id}>
+                                    <p key={photo.id}>
+                                        Title: {photo.title}{"\n"}
+                                        <img src={photo.imageUrl} alt="A favorited photo"></img>
+                                    </p>
+                                </div>
+                            </>
+
+
+                    })}
                 </section>
             </main>
         </>
     )
 }
+
+{/* {photos.map(photo => <div key={photo.id} value={photo.id}>
+                        <p key={photo.id}>
+                            Title: {photo.title}{"\n"}
+                            <img src={photo.imageUrl} alt="A favorited photo"></img>
+                        </p>
+                    </div>)} */}

@@ -47,7 +47,7 @@ export const CalendarForm = () => {
     }
 
     const createPhotoObject = () => {
-        const userId = localStorage.getItem("app_user_id")
+        const userId = parseInt(localStorage.getItem("app_user_id"))
 
         return {
             userId: userId,
