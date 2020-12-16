@@ -6,7 +6,7 @@ import { ApodContext } from '../photos/PhotoProvider'
 export const Categories = () => {
 
     const [selectedTag, setSelectedTag]             = useState(0)
-    // const [filteredPhotos, setFilteredPhotos]       = useState([])
+    const [filteredPhotos, setFilteredPhotos]       = useState([])
     const [filteredPhotoTags, setFilteredPhotoTags] = useState([])
 
     const { tags, getTags, photoTags, getPhotoTagsExpand } = useContext(TagContext)
@@ -16,8 +16,8 @@ export const Categories = () => {
 
     const currentUser = parseInt(localStorage.getItem("app_user_id"))
 
-    const filteredPhotos = photoTags.filter(photoTag => photoTag.photo.userId === currentUser)
-    console.log("OOOOOOO",filteredPhotos)
+    
+    
 
     // onMount
     useEffect(() => {
@@ -37,25 +37,32 @@ export const Categories = () => {
         getPhotos(currentUser)
     }, [])
 
+    useEffect(() => {
+        // console.log("filteredPhotos: ",filteredPhotos, currentUser, photoTags, 'oo', photoTags.filter(photoTag => photoTag.photo.userId === currentUser))
+        setFilteredPhotos(photoTags.filter(photoTag => photoTag.photo.userId === currentUser))
+        
+    },[])
+
+    
    
     useEffect(() => {
         // debugger
-        console.log("CatPage: selectedTag value: ", selectedTag)
+        // console.log("CatPage: selectedTag value: ", selectedTag)
 // debugger
         if (selectedTag !== 0) {
-            // const subset = photoTags.filter(photoTag => photoTag.tagId === +selectedTag)
             const subset = filteredPhotos.filter(photoTag => photoTag.tagId === +selectedTag)
-            // photoTags now have expanded photo object
-            console.log("photoTagsExpanded: ", photoTags, subset)
+            
             setFilteredPhotoTags(subset)
-            
-
-            
-            
         }
+        else {
+            setFilteredPhotoTags(filteredPhotos)
+        }
+
     }, [selectedTag])
 
+    
      if (bestestphotoTags) {
+         console.log('filtered stufff', filteredPhotos)
         return (
             <>
                 <main>
@@ -65,7 +72,7 @@ export const Categories = () => {
                         {/* tag drop-down */}
                         <label htmlFor="tag-select">Choose a tag:</label>
     
-                        <select name="tags" id="tag-select" onChange={(e) => { setSelectedTag(e.target.value) }}>
+                        <select name="tags" id="tag-select" onChange={(e) => { setSelectedTag(+e.target.value) }}>
                             <option value="0">--Please choose an option--</option>
                                 ${tags.map(tag => (<option key={tag.id} value={tag.id}>
                                 {tag.tag}
@@ -74,10 +81,28 @@ export const Categories = () => {
                     </div>
     
                     <section>
-                        {photos.map(photo => {
+                    {selectedTag !== 0
+                        ? filteredPhotoTags.map(photo => {
+                                                        
+                            photo = photo.photo
+                                return <>
+                                    <div>
+                                        <p key={photo.id} value={photo.id}>
+                                            Title: {photo.title}{"\n"}
+                                            <img src={photo.imageUrl} alt="A favorited photo"></img>
+                                        </p>
+                                        <button
+                                            onClick={() => {
+                                                deletePhoto(photo.id)
+                                            }}>
+                                            Delete Photo</button>
+                                    </div>
+                                </>
+                        })
+                        : filteredPhotos.map(photo => {
                             // debugger
-                            if (photo.userId === currentUser)
-    
+                            // if (filteredPhotos.userId === currentUser)
+                            photo = photo.photo
                                 return <>
                                     <div>
                                         <p key={photo.id} value={photo.id}>
