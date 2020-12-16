@@ -22,6 +22,12 @@ export const TagProvider = (props) => {
             .then(setPhotoTags)
     }
 
+    const getPhotoTagsExpand = () => {
+        return fetch('http://localhost:8088/photoTags?_expand=photo')
+            .then((response) => response.json())
+            .then(setPhotoTags)
+    }
+
     // add addTag
     const addPhotoTag = (photoTag) => {
         return fetch('http://localhost:8088/photoTags', {
@@ -39,7 +45,7 @@ export const TagProvider = (props) => {
             {
                 tags, setTags, getTags,
                 addPhotoTag, getPhotoTags, 
-                photoTags
+                photoTags, getPhotoTagsExpand
             }
         }>
             {props.children}

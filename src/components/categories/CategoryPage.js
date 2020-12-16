@@ -5,15 +5,19 @@ import { ApodContext } from '../photos/PhotoProvider'
 
 export const Categories = () => {
 
-    const [selectedTag, setSelectedTag] = useState(0)
-    const [filteredPhotos, setFilteredPhotos] = useState([])
+    const [selectedTag, setSelectedTag]             = useState(0)
+    // const [filteredPhotos, setFilteredPhotos]       = useState([])
+    const [filteredPhotoTags, setFilteredPhotoTags] = useState([])
 
-    const { tags, getTags, photoTags, getPhotoTags } = useContext(TagContext)
+    const { tags, getTags, photoTags, getPhotoTagsExpand } = useContext(TagContext)
     const { photos, getPhotos, deletePhoto } = useContext(ApodContext)
 
     const [bestestphotoTags, setPhotoTags] = useState([])
 
     const currentUser = parseInt(localStorage.getItem("app_user_id"))
+
+    const filteredPhotos = photoTags.filter(photoTag => photoTag.photo.userId === currentUser)
+    console.log("OOOOOOO",filteredPhotos)
 
     // onMount
     useEffect(() => {
@@ -21,7 +25,7 @@ export const Categories = () => {
     }, [])
 
     useEffect(() => {
-        getPhotoTags()
+        getPhotoTagsExpand()
     }, [])
 
     useEffect(() => {
@@ -30,16 +34,25 @@ export const Categories = () => {
     }, [photoTags])
     
     useEffect(() => {
-        getPhotos()
+        getPhotos(currentUser)
     }, [])
 
    
     useEffect(() => {
+        // debugger
         console.log("CatPage: selectedTag value: ", selectedTag)
+// debugger
+        if (selectedTag !== 0) {
+            // const subset = photoTags.filter(photoTag => photoTag.tagId === +selectedTag)
+            const subset = filteredPhotos.filter(photoTag => photoTag.tagId === +selectedTag)
+            // photoTags now have expanded photo object
+            console.log("photoTagsExpanded: ", photoTags, subset)
+            setFilteredPhotoTags(subset)
+            
 
-        // if (selectedTag !== 0) {
-        //     const subset = photoTags.filter(photoTag => )
-        // }
+            
+            
+        }
     }, [selectedTag])
 
      if (bestestphotoTags) {

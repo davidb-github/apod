@@ -1,5 +1,4 @@
 // imports
-import { getDefaultNormalizer, getNodeText } from '@testing-library/react'
 import React, { useContext, useEffect, useState } from 'react'
 import { ApodContext } from "../photos/PhotoProvider"
 import { TagContext } from '../tags/TagProvider'
@@ -7,17 +6,17 @@ import { TagContext } from '../tags/TagProvider'
 
 export const CalendarForm = () => {
 
-    const [date, setDate] = useState("")
-    const [selectedTag, setSelectedTag] = useState("") //? string or int
-    const [noteText, setNoteText] = useState("")
-
+    const [date, setDate]               = useState("")
+    const [selectedTag, setSelectedTag] = useState(0) //? string or int
+    const [noteText, setNoteText]       = useState("")
+    
     // onMount loads up context, runs jsx, skips useEffects
-    const { tags, getTags } = useContext(TagContext)
-    const { apod, getApod } = useContext(ApodContext)
+    const { tags, getTags }             = useContext(TagContext)
+    const { apod, getApod }             = useContext(ApodContext)
 
     const {apodByDate, getApodByDate} = useContext(ApodContext)
-    const {photo, addPhoto} = useContext(ApodContext)
-    const {tag, addPhotoTag} = useContext(TagContext)
+    const {photo, addPhoto}           = useContext(ApodContext)
+    const {tag, addPhotoTag}          = useContext(TagContext)
 
 
     // onMount
