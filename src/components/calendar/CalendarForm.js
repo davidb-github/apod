@@ -8,7 +8,7 @@ import { TagContext } from '../tags/TagProvider'
 export const CalendarForm = () => {
 
     const [date, setDate] = useState("")
-    const [selectedTag, setSelectedTag] = useState("")
+    const [selectedTag, setSelectedTag] = useState("") //? string or int
     const [noteText, setNoteText] = useState("")
 
     // onMount loads up context, runs jsx, skips useEffects
@@ -30,9 +30,9 @@ export const CalendarForm = () => {
     }, [])
 
     // on Change
-    useEffect(() => {
-        console.log("useEffect state:", tags)
-    }, [tags])
+    // useEffect(() => {
+    //     console.log("useEffect state:", tags)
+    // }, [tags])
 
     // useEffect to watch datestate - call getApod by date
     useEffect(() => {
@@ -64,7 +64,6 @@ export const CalendarForm = () => {
         addPhoto(createPhotoObject())
         .then(response => addPhotoTag({photoId: response.id, tagId: parseInt(selectedTag) })).catch(console.log)        
     }
-
 
     return (
         <>
