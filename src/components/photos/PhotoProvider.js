@@ -29,8 +29,8 @@ export const ApodProvider = (props) => {
     }
 
     
-    const getPhotos = () => {
-        return fetch("http://localhost:8088/photos")
+    const getPhotos = (userId) => {
+        return fetch(`http://localhost:8088/photos?user=${userId}`)
             .then(res => res.json())
             // .then(parsedPhotos => setPhotos(parsedPhotos) )
             .then(setPhotos)

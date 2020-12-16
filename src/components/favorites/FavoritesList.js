@@ -11,7 +11,7 @@ export const FavoritesList = () => {
     const currentUser = parseInt(localStorage.getItem("app_user_id"))
 
     useEffect(() => {
-        getPhotos()
+        getPhotos(currentUser)
     }, [])
 
     return (

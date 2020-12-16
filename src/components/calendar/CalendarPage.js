@@ -1,15 +1,8 @@
 // imports
 import React from 'react'
 import { CalendarForm } from './CalendarForm'
-// , { useState, useContext, useEffect } 
 import { ApodProvider } from '../photos/PhotoProvider'
 import { TagProvider } from '../tags/TagProvider'
-// import { PhotoDetail } from './components/photos/PhotoDetail'
-
-// will make call to apod API and display photo
-
-
-
 
 export const CalendarPage = () => {
 

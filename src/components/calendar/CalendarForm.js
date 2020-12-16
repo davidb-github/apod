@@ -1,5 +1,4 @@
 // imports
-import { getDefaultNormalizer, getNodeText } from '@testing-library/react'
 import React, { useContext, useEffect, useState } from 'react'
 import { ApodContext } from "../photos/PhotoProvider"
 import { TagContext } from '../tags/TagProvider'
@@ -7,17 +6,17 @@ import { TagContext } from '../tags/TagProvider'
 
 export const CalendarForm = () => {
 
-    const [date, setDate] = useState("")
-    const [selectedTag, setSelectedTag] = useState("")
-    const [noteText, setNoteText] = useState("")
-
+    const [date, setDate]               = useState("")
+    const [selectedTag, setSelectedTag] = useState(0) //? string or int
+    const [noteText, setNoteText]       = useState("")
+    
     // onMount loads up context, runs jsx, skips useEffects
-    const { tags, getTags } = useContext(TagContext)
-    const { apod, getApod } = useContext(ApodContext)
+    const { tags, getTags }             = useContext(TagContext)
+    const { apod, getApod }             = useContext(ApodContext)
 
     const {apodByDate, getApodByDate} = useContext(ApodContext)
-    const {photo, addPhoto} = useContext(ApodContext)
-    const {tag, addPhotoTag} = useContext(TagContext)
+    const {photo, addPhoto}           = useContext(ApodContext)
+    const {tag, addPhotoTag}          = useContext(TagContext)
 
 
     // onMount
@@ -29,10 +28,10 @@ export const CalendarForm = () => {
         getApod()
     }, [])
 
-    // 
-    useEffect(() => {
-        console.log("useEffect state:", tags)
-    }, [tags])
+    // on Change
+    // useEffect(() => {
+    //     console.log("useEffect state:", tags)
+    // }, [tags])
 
     // useEffect to watch datestate - call getApod by date
     useEffect(() => {
@@ -58,13 +57,12 @@ export const CalendarForm = () => {
         }
         // console.log
     }
-
+    // accept json-server response so photo id is available for the addPhotoTag call
     const handleSaveFavs = () => {
         console.log(ApodContext)
         addPhoto(createPhotoObject())
         .then(response => addPhotoTag({photoId: response.id, tagId: parseInt(selectedTag) })).catch(console.log)        
     }
-
 
     return (
         <>

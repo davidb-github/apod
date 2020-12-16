@@ -5,7 +5,9 @@ import React, { useState } from "react"
 export const TagContext = React.createContext()
 
 export const TagProvider = (props) => {
+
     const [tags, setTags] = useState([])
+    const [photoTags, setPhotoTags] = useState([])
 
     
     const getTags = () => {
@@ -14,7 +16,19 @@ export const TagProvider = (props) => {
             .then(setTags)
     }
 
-    // add addTag 
+    const getPhotoTags = () => {
+        return fetch('http://localhost:8088/photoTags')
+            .then((response) => response.json())
+            .then(setPhotoTags)
+    }
+
+    const getPhotoTagsExpand = () => {
+        return fetch('http://localhost:8088/photoTags?_expand=photo')
+            .then((response) => response.json())
+            .then(setPhotoTags)
+    }
+
+    // add addTag
     const addPhotoTag = (photoTag) => {
         return fetch('http://localhost:8088/photoTags', {
             method: "POST",
@@ -25,14 +39,13 @@ export const TagProvider = (props) => {
         })
             .then(getTags)
     }
-
-      
-
+  
     return (
         <TagContext.Provider value={
             {
                 tags, setTags, getTags,
-                addPhotoTag
+                addPhotoTag, getPhotoTags, 
+                photoTags, getPhotoTagsExpand
             }
         }>
             {props.children}
