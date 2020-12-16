@@ -7,7 +7,7 @@ export const TagContext = React.createContext()
 export const TagProvider = (props) => {
 
     const [tags, setTags] = useState([])
-    const [photoTags, setPhotoTags] = useState({})
+    const [photoTags, setPhotoTags] = useState([])
 
     
     const getTags = () => {
