@@ -43,8 +43,7 @@ export const Categories = () => {
         
     },[])
 
-    
-   
+ 
     useEffect(() => {
         // debugger
         // console.log("CatPage: selectedTag value: ", selectedTag)
