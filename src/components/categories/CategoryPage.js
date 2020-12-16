@@ -1,6 +1,6 @@
 // imports
-import { useState, useContext, useEffect } from "react"
-import React from 'react'
+import React, { useState, useContext, useEffect } from "react"
+// import  from 'react'
 import { TagContext } from '../tags/TagProvider'
 
 export const Categories = () => {
@@ -14,11 +14,21 @@ export const Categories = () => {
         getTags()
     }, [])
 
+    useEffect(() => {
+        console.log("CatPage: selectedTag value: ", selectedTag)
+
+        // if (selectedTag !== 0) {
+        //     const subset = 
+        // }
+    }, [selectedTag])
+
+
+
     // useEffect()
     // useEffect for seletedTag
     // filter photos when it changes
     // copy section from favlist to here
-    // 
+
 
     return (
         <>

@@ -29,7 +29,7 @@ export const CalendarForm = () => {
         getApod()
     }, [])
 
-    // 
+    // on Change
     useEffect(() => {
         console.log("useEffect state:", tags)
     }, [tags])
@@ -58,7 +58,7 @@ export const CalendarForm = () => {
         }
         // console.log
     }
-
+    // accept json-server response so photo id is available for the addPhotoTag call
     const handleSaveFavs = () => {
         console.log(ApodContext)
         addPhoto(createPhotoObject())
