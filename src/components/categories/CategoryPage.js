@@ -29,7 +29,7 @@ export const Categories = () => {
     }, [])
 
     useEffect(() => {
-        console.log("setPhotTags ran:", photoTags)
+        // console.log("setPhotTags ran:", photoTags)
         setPhotoTags(photoTags)
     }, [photoTags])
     
@@ -61,7 +61,7 @@ export const Categories = () => {
 
     
      if (bestestphotoTags) {
-         console.log('filtered stufff', filteredPhotos)
+        //  console.log('filtered stufff', filteredPhotos)
         return (
             <>
                 <main>
@@ -103,8 +103,8 @@ export const Categories = () => {
                             // if (filteredPhotos.userId === currentUser)
                             photo = photo.photo
                                 return <>
-                                    <div>
-                                        <p key={photo.id} value={photo.id}>
+                                    <div key={photo.id} value={photo.id}>
+                                        <p>
                                             Title: {photo.title}{"\n"}
                                             <img src={photo.imageUrl} alt="A favorited photo"></img>
                                         </p>
@@ -119,9 +119,6 @@ export const Categories = () => {
                     </section>
     
                 </main>
-                {/* <ApodProvider>
-                    <CategoryList />
-                </ApodProvider> */}
             </>
         )
     }

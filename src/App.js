@@ -7,26 +7,26 @@ import './App.css';
 
 export const App = () => {
   return (
-<>
+    <>
 
-  <Route render={ () => {
-    // The user id is saved under the key app_user_id in local Storage. Change below if needed!
-      if (localStorage.getItem("app_user_id")) {
+      <Route render={() => {
+        if (localStorage.getItem("app_user_id")) {
           return (
-              <>
-                  <NavBar />
-                  <ApplicationViews />
-              </>
+            <>
+              <NavBar />
+              <ApplicationViews />
+            </>
           )
-      } else {
+        } else {
           return <Redirect to="/login" />
-      }
-  } } />
+        }
+      }} />
 
-  <Route path="/login" render={props => <Login {...props} />} />
-  <Route path="/register" render={props => <Register {...props} />} />
-</>
-  ) }
+      <Route path="/login" render={props => <Login {...props} />} />
+      <Route path="/register" render={props => <Register {...props} />} />
+    </>
+  )
+}
 
 export default App;
 

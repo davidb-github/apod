@@ -25,7 +25,7 @@ export const PhotoDetail = () => {
                     </div>
                     <div>
                         <img src={apod.url} alt="apod"></img>
-                        {console.log(apod.url)}
+                        {/* {console.log(apod.url)} */}
                     </div>
                     <div>
                         <p>Description: {apod.explanation}</p>
