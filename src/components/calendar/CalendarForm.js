@@ -74,7 +74,7 @@ export const CalendarForm = () => {
         <>
             <main>
                 <article>
-                    <h1>Welcome to CalendarForm.js</h1>
+                    {/* <h1>Welcome to CalendarForm.js</h1> */}
                     <p>{userMessage && userMessage}</p>
 
                     <div>

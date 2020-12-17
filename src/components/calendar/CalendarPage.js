@@ -9,8 +9,8 @@ export const CalendarPage = () => {
     return (
         <>
             <main>
-                <h1>Welcome to CalendarPage.js</h1>
-                <p>Astronomy Photo of the Day: Select a date to see a currated photo.</p>
+                {/* <h1>Welcome to CalendarPage.js</h1> */}
+                <h1>Astronomy Photo of the Day: Select a date.</h1>
             </main>
             <TagProvider>
                 <ApodProvider>
