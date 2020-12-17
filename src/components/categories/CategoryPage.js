@@ -38,30 +38,17 @@ export const Categories = () => {
     }, [])
 
     useEffect(() => {
-        // console.log("filteredPhotos: ",filteredPhotos, currentUser, photoTags, 'oo', photoTags.filter(photoTag => photoTag.photo.userId === currentUser))
+        console.log("filteredPhotos: ",filteredPhotos, currentUser, photoTags, 'oo', photoTags.filter(photoTag => photoTag.photo.userId === currentUser))
         setFilteredPhotos(photoTags.filter(photoTag => photoTag.photo.userId === currentUser))
         
     },[])
 
  
     useEffect(() => {
-        // debugger
-        // console.log("CatPage: selectedTag value: ", selectedTag)
-// debugger
-        if (selectedTag !== 0) {
-            const subset = filteredPhotos.filter(photoTag => photoTag.tagId === +selectedTag)
-            
-            setFilteredPhotoTags(subset)
-        }
-        else {
-            setFilteredPhotoTags(filteredPhotos)
-        }
-
+        const subset = filteredPhotos.filter(photoTag => photoTag.tagId === +selectedTag)
+        setFilteredPhotoTags(subset)
     }, [selectedTag])
 
-    
-     if (bestestphotoTags) {
-        //  console.log('filtered stufff', filteredPhotos)
         return (
             <>
                 <main>
@@ -99,8 +86,7 @@ export const Categories = () => {
                                 </>
                         })
                         : filteredPhotos.map(photo => {
-                            // debugger
-                            // if (filteredPhotos.userId === currentUser)
+                                                 
                             photo = photo.photo
                                 return <>
                                     <div key={photo.id} value={photo.id}>
@@ -121,8 +107,6 @@ export const Categories = () => {
                 </main>
             </>
         )
-    }
-    else {return <div></div>}
     }
  
 

@@ -30,7 +30,7 @@ export const ApodProvider = (props) => {
 
 
     const getPhotos = (userId) => {
-        return fetch(`http://localhost:8088/photos?user=${userId}`)
+        return fetch(`http://localhost:8088/photos?_embed=photoTags&userId=${userId}`)
             .then(res => res.json())
             // .then(parsedPhotos => setPhotos(parsedPhotos) )
             .then(setPhotos)
