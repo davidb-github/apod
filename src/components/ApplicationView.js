@@ -13,12 +13,6 @@ export const ApplicationViews = (props) => {
             <ApodProvider>
                 {/* Render the Home page when http://localhost:3000/ */}
                 <Route exact path="/">
-                    <button onClick={() => {
-                        localStorage.clear();
-                        // props.history.push("login")
-                    }}>
-                        Log Out
-                    </button>
                     <Home />
                 </Route>
             </ApodProvider>
