@@ -17,6 +17,18 @@ export const NavBar = (props) => {
             <li className="navbar__item">
                 <Link className="navbar__link" to="/Categories">Categories</Link>
             </li>
+
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/" ><button onClick={() => {
+                        // console.log("props", props)
+                        localStorage.clear();
+                        // props.history.push("/login")
+                    }}>
+                        Log Out
+                    </button></Link>
+                
+            </li>
         </ul>
     )
 }
+

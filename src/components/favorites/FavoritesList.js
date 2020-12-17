@@ -17,16 +17,16 @@ export const FavoritesList = () => {
     return (
         <>
             <main>
-                <h1>Welcome to FavoitesList.js</h1>
-                <p>build additional FavoritesList components</p>
+                {/* <h1>Welcome to FavoitesList.js</h1>
+                <p>build additional FavoritesList components</p> */}
                 <section>
                     {photos.map(photo => {
                         // debugger
                         if (photo.userId === currentUser)
 
                             return <>
-                                <div>
-                                    <p key={photo.id} value={photo.id}>
+                                <div key={photo.id} value={photo.id}>
+                                    <p>
                                         Title: {photo.title}{"\n"}
                                         <img src={photo.imageUrl} alt="A favorited photo"></img>
                                     </p>

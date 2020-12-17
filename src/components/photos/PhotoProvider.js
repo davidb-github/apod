@@ -11,7 +11,7 @@ export const ApodProvider = (props) => {
     const [apod, setApod] = useState({})
 
     const [apodByDate, setApodByDate] = useState({})
- 
+
     // set state for local photo data
     const [photos, setPhotos] = useState([])
 
@@ -28,7 +28,7 @@ export const ApodProvider = (props) => {
             .then(setApodByDate)
     }
 
-    
+
     const getPhotos = (userId) => {
         return fetch(`http://localhost:8088/photos?user=${userId}`)
             .then(res => res.json())
@@ -60,16 +60,13 @@ export const ApodProvider = (props) => {
             .then(getPhotos)
     }
 
-
-
-
     return (
         <ApodContext.Provider value={
             {
-                apod  , setApod  , getApod,
+                apod, setApod, getApod,
                 photos, setPhotos, getPhotos,
                 addPhoto, getApodByDate, apodByDate,
-                deletePhoto          
+                deletePhoto
             }
         }>
             {props.children}

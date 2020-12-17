@@ -6,17 +6,17 @@ import { TagContext } from '../tags/TagProvider'
 
 export const CalendarForm = () => {
 
-    const [date, setDate]               = useState("")
+    const [date, setDate] = useState("")
     const [selectedTag, setSelectedTag] = useState(0) //? string or int
-    const [noteText, setNoteText]       = useState("")
-    
-    // onMount loads up context, runs jsx, skips useEffects
-    const { tags, getTags }             = useContext(TagContext)
-    const { apod, getApod }             = useContext(ApodContext)
+    const [noteText, setNoteText] = useState("")
 
-    const {apodByDate, getApodByDate} = useContext(ApodContext)
-    const {photo, addPhoto}           = useContext(ApodContext)
-    const {tag, addPhotoTag}          = useContext(TagContext)
+    // onMount loads up context, runs jsx, skips useEffects
+    const { tags, getTags } = useContext(TagContext)
+    const { apod, getApod } = useContext(ApodContext)
+
+    const { apodByDate, getApodByDate } = useContext(ApodContext)
+    const { photo, addPhoto } = useContext(ApodContext)
+    const { tag, addPhotoTag } = useContext(TagContext)
 
 
     // onMount
@@ -35,7 +35,7 @@ export const CalendarForm = () => {
 
     // useEffect to watch datestate - call getApod by date
     useEffect(() => {
-        console.log(date)
+        // console.log(date)
         getApodByDate(date)
     }, [date])
 
@@ -51,17 +51,17 @@ export const CalendarForm = () => {
         return {
             userId: userId,
             noteText: noteText,
-            title:      apodByDate.title,
-            imageUrl:   apodByDate.url,
-            date:   date
+            title: apodByDate.title,
+            imageUrl: apodByDate.url,
+            date: date
         }
         // console.log
     }
     // accept json-server response so photo id is available for the addPhotoTag call
     const handleSaveFavs = () => {
-        console.log(ApodContext)
+        // console.log(ApodContext)
         addPhoto(createPhotoObject())
-        .then(response => addPhotoTag({photoId: response.id, tagId: parseInt(selectedTag) })).catch(console.log)        
+            .then(response => addPhotoTag({ photoId: response.id, tagId: parseInt(selectedTag) })).catch(console.log)
     }
 
     return (
@@ -82,7 +82,7 @@ export const CalendarForm = () => {
                         {/* tag drop-down */}
                         <label htmlFor="tag-select">Choose a tag:</label>
 
-                        <select name="tags" id="tag-select" onChange={(e) =>{setSelectedTag(e.target.value)}}>
+                        <select name="tags" id="tag-select" onChange={(e) => { setSelectedTag(e.target.value) }}>
                             <option value="0">--Please choose an option--</option>
                             ${tags.map(tag => (<option key={tag.id} value={tag.id}>
                                 {tag.tag}
@@ -95,23 +95,19 @@ export const CalendarForm = () => {
                         <label htmlFor="apod-note">Add Note: </label>
 
                         <textarea id="note" name="note"
-                            rows="5" cols="33" onChange={(e) => {setNoteText(e.target.value)}}>
+                            rows="5" cols="33" onChange={(e) => { setNoteText(e.target.value) }}>
                         </textarea>
                     </div>
 
-                    
+
                     <div>
                         {/* Save Photo to favorites */}
-                        <button onClick={ handleSaveFavs }
+                        <button onClick={handleSaveFavs}
                             // wire up OnClick to call savetoFavs
                             // do I need preventDefault behavior or not?
                             type="button">
                             Save to Favorites
                         </button>
-                    </div>
-
-                    <div>
-
                     </div>
 
                     {/* Photo for selected day goes in this div */}
@@ -124,7 +120,7 @@ export const CalendarForm = () => {
                                 </div>
                                 <div>
                                     <img src={apodByDate.url} alt="apod"></img>
-                                    {console.log(apodByDate.url)}
+                                    {/* {console.log(apodByDate.url)} */}
                                 </div>
                                 <div>
                                     <p>Description: {apodByDate.explanation}</p>
@@ -134,7 +130,7 @@ export const CalendarForm = () => {
                         }
                     </div >
                 </article>
-        </main>
+            </main>
         </>
     )
 }
