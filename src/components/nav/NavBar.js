@@ -20,7 +20,7 @@ export const NavBar = (props) => {
 
             <li className="navbar__item">
                 <Link className="navbar__link" to="/" ><button onClick={() => {
-                        console.log("props", props)
+                        // console.log("props", props)
                         localStorage.clear();
                         // props.history.push("/login")
                     }}>
