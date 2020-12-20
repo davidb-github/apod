@@ -40,7 +40,7 @@ export const Categories = () => {
         return (
             <>
                 <main>
-                    <h1>CategoryPage.js will show the categories drop-down and search bar</h1>
+                    {/* <h1>CategoryPage.js will show the categories drop-down and search bar</h1> */}
     
                     <div>
                         {/* tag drop-down */}
