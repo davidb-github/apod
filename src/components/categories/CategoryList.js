@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { TagContext } from '../tags/TagProvider'
 import { ApodContext } from '../photos/PhotoProvider'
 
-export const Categories = () => {
+export const CategoryList = () => {
 
     const [selectedTag, setSelectedTag]             = useState(0)
     const [filteredPhotoTags, setFilteredPhotoTags] = useState([])

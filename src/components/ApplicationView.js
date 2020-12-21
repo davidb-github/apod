@@ -5,7 +5,7 @@ import { Home } from "../Home"
 import { CalendarPage } from './calendar/CalendarPage'
 import { Favorites } from './favorites/FavoritesPage'
 // import { Categories } from "./categories/CategoryPage"
-import { Categories } from "./categories/CategoryList"
+import { CategoryList } from "./categories/CategoryList"
 import { TagProvider } from './tags/TagProvider'
 
 export const ApplicationViews = (props) => {
@@ -26,19 +26,21 @@ export const ApplicationViews = (props) => {
             </ApodProvider>
 
             <ApodProvider>
-                {/* Render the favorites page when http://localhost:3000/favorites */}
-                <Route path="/favorites">
-                    <Favorites />
-                </Route>
+                <TagProvider>
+                    {/* Render the favorites page when http://localhost:3000/favorites */}
+                    <Route path="/favorites">
+                        <Favorites />
+                    </Route>
+                </TagProvider>
             </ApodProvider>
 
             <ApodProvider>
                 <TagProvider>
                     {/* Render the categories elements on the favorites page when http://localhost:3000/categories */}
                     <Route path="/categories">
-                        <Categories />
+                        <CategoryList />
                     </Route>
-                </TagProvider>
+                    </TagProvider>
             </ApodProvider>
         </>
     )

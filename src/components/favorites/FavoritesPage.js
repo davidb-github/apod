@@ -2,6 +2,8 @@
 import React, {useContext} from 'react'
 import { ApodProvider } from '../photos/PhotoProvider'
 import { FavoritesList } from './FavoritesList'
+import { CategoryList } from '../categories/CategoryList'
+
 // , { useState, useContext, useEffect }
 
 
@@ -15,7 +17,8 @@ export const Favorites = () => {
 
             </main>
             <ApodProvider>
-                <FavoritesList />
+                
+                <CategoryList />
             </ApodProvider>
         </>
     )

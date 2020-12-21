@@ -20,8 +20,7 @@ export const FavoritesList = () => {
                 <section>
                     {photos.map(photo => {
                         // debugger
-                        if (photo.userId === currentUser)
-
+                        // if (photo.userId === currentUser)
                             return <>
                                 <div key={photo.id} value={photo.id}>
                                     <p>
@@ -29,7 +28,8 @@ export const FavoritesList = () => {
                                         <img src={photo.imageUrl} alt="A favorited photo"></img>
                                     </p>
                                     <button
-                                        onClick={() => {
+                                        onClick={() => { 
+                                            console.log(photo.id)
                                             deletePhoto(photo.id)
                                         }}>
                                         Delete Photo</button>

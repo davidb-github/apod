@@ -111,8 +111,6 @@ export const CalendarForm = () => {
                     <div>
                         {/* Save Photo to favorites */}
                         <button onClick={handleSaveFavs}
-                            // wire up OnClick to call savetoFavs
-                            // do I need preventDefault behavior or not?
                             type="button">
                             Save to Favorites
                         </button>
@@ -127,8 +125,11 @@ export const CalendarForm = () => {
                                     <p>Date : {apodByDate.date}</p>
                                 </div>
                                 <div>
-                                    <img src={apodByDate.url} alt="apod"></img>
-                                    {/* {console.log(apodByDate.url)} */}
+                                    {apodByDate.media_type === 'video' 
+                                    ? <div>
+                                        Note: The media for the seleted date is external video. <br/>
+                                        External URL: <a href={apodByDate.url} target="_blank">Click to see Youtube Video</a></div>
+                                    : <img src={apodByDate.url} alt="apod"></img>} 
                                 </div>
                                 <div>
                                     <p>Description: {apodByDate.explanation}</p>
