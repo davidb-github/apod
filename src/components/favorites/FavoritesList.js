@@ -17,8 +17,6 @@ export const FavoritesList = () => {
     return (
         <>
             <main>
-                {/* <h1>Welcome to FavoitesList.js</h1>
-                <p>build additional FavoritesList components</p> */}
                 <section>
                     {photos.map(photo => {
                         // debugger
