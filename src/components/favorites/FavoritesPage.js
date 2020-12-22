@@ -1,21 +1,17 @@
 // imports
-import React, {useContext} from 'react'
+import React from 'react'
 import { ApodProvider } from '../photos/PhotoProvider'
-import { FavoritesList } from './FavoritesList'
-// , { useState, useContext, useEffect }
-
+import { CategoryList } from '../categories/CategoryList'
 
 export const Favorites = () => {
 
     return (
         <>
             <main>
-            {/* <h1>Welcome to FavoitesPage.js</h1>
-            <p>build additional favpage components</p> */}
-
+            {/* Do I move the provider and function calls into main? */}
             </main>
             <ApodProvider>
-                <FavoritesList />
+                <CategoryList />
             </ApodProvider>
         </>
     )

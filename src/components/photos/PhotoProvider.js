@@ -7,11 +7,10 @@ import { keys } from "../../Settings.js"
 export const ApodContext = React.createContext()
 
 export const ApodProvider = (props) => {
+    const currentUser = parseInt(localStorage.getItem("app_user_id"))
     // set state for ext API data
     const [apod, setApod] = useState({})
-
     const [apodByDate, setApodByDate] = useState({})
-
     // set state for local photo data
     const [photos, setPhotos] = useState([])
 
@@ -30,7 +29,7 @@ export const ApodProvider = (props) => {
 
 
     const getPhotos = (userId) => {
-        return fetch(`http://localhost:8088/photos?user=${userId}`)
+        return fetch(`http://localhost:8088/photos?_embed=photoTags&userId=${userId}`)
             .then(res => res.json())
             // .then(parsedPhotos => setPhotos(parsedPhotos) )
             .then(setPhotos)
@@ -54,10 +53,18 @@ export const ApodProvider = (props) => {
     }
 
     const deletePhoto = photoId => {
+        console.log("object or not?", photoId)
         return fetch(`http://localhost:8088/photos/${photoId}`, {
             method: "DELETE"
         })
-            .then(getPhotos)
+        // hack to work around json-server returning get ahead of delete photo completion
+            .then(response => {
+                setTimeout(() => {
+                    getPhotos(currentUser)
+                }, 500)
+                
+            })
+            
     }
 
     return (

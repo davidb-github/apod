@@ -9,6 +9,7 @@ export const CalendarForm = () => {
     const [date, setDate] = useState("")
     const [selectedTag, setSelectedTag] = useState(0) //? string or int
     const [noteText, setNoteText] = useState("")
+    const [userMessage, setUserMessage] = useState("")
 
     // onMount loads up context, runs jsx, skips useEffects
     const { tags, getTags } = useContext(TagContext)
@@ -62,18 +63,25 @@ export const CalendarForm = () => {
         // console.log(ApodContext)
         addPhoto(createPhotoObject())
             .then(response => addPhotoTag({ photoId: response.id, tagId: parseInt(selectedTag) })).catch(console.log)
+        setDate("")
+        setSelectedTag(0)
+        setNoteText("")
+        setUserMessage("Photo Saved")
+        setTimeout(() => {setUserMessage("")}, 2000)
     }
 
     return (
         <>
             <main>
                 <article>
-                    <h1>Welcome to CalendarForm.js</h1>
+                    {/* <h1>Welcome to CalendarForm.js</h1> */}
+                    <p>{userMessage && userMessage}</p>
+
                     <div>
                         {/* calendar input */}
                         <label htmlFor="date">Select a date:</label>
 
-                        <input type="date" id="date" name="APOD Date" onChange={handleChange}>
+                        <input value={date} type="date" id="date" name="APOD Date" onChange={handleChange}>
 
                         </input>
                     </div>
@@ -82,8 +90,8 @@ export const CalendarForm = () => {
                         {/* tag drop-down */}
                         <label htmlFor="tag-select">Choose a tag:</label>
 
-                        <select name="tags" id="tag-select" onChange={(e) => { setSelectedTag(e.target.value) }}>
-                            <option value="0">--Please choose an option--</option>
+                        <select value={selectedTag} name="tags" id="tag-select" onChange={(e) => { setSelectedTag(e.target.value) }}>
+                            <option value="0">--Choose/Remove tag filters--</option>
                             ${tags.map(tag => (<option key={tag.id} value={tag.id}>
                                 {tag.tag}
                             </option>))}
@@ -94,7 +102,7 @@ export const CalendarForm = () => {
                         {/* Text box */}
                         <label htmlFor="apod-note">Add Note: </label>
 
-                        <textarea id="note" name="note"
+                        <textarea value={noteText} id="note" name="note"
                             rows="5" cols="33" onChange={(e) => { setNoteText(e.target.value) }}>
                         </textarea>
                     </div>
@@ -103,8 +111,6 @@ export const CalendarForm = () => {
                     <div>
                         {/* Save Photo to favorites */}
                         <button onClick={handleSaveFavs}
-                            // wire up OnClick to call savetoFavs
-                            // do I need preventDefault behavior or not?
                             type="button">
                             Save to Favorites
                         </button>
@@ -119,8 +125,11 @@ export const CalendarForm = () => {
                                     <p>Date : {apodByDate.date}</p>
                                 </div>
                                 <div>
-                                    <img src={apodByDate.url} alt="apod"></img>
-                                    {/* {console.log(apodByDate.url)} */}
+                                    {apodByDate.media_type === 'video' 
+                                    ? <div>
+                                        Note: The media for the seleted date is external video. <br/>
+                                        External URL: <a href={apodByDate.url} target="_blank">Click to see Youtube Video</a></div>
+                                    : <img src={apodByDate.url} alt="apod"></img>} 
                                 </div>
                                 <div>
                                     <p>Description: {apodByDate.explanation}</p>
