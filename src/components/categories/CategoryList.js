@@ -7,8 +7,11 @@ export const CategoryList = () => {
 
     const [selectedTag, setSelectedTag]             = useState(0)
     const [filteredPhotoTags, setFilteredPhotoTags] = useState([])
+
     const { tags, getTags, photoTags, getPhotoTagsExpand } = useContext(TagContext)
-    const { photos, getPhotos, deletePhoto } = useContext(ApodContext)
+    const { photos, getPhotos, deletePhoto }               = useContext(ApodContext)
+
+    // grab userId from localStorage
     const currentUser = parseInt(localStorage.getItem("app_user_id"))
 
     // onMount
@@ -34,14 +37,13 @@ export const CategoryList = () => {
             // if selectedTag is included then add to subset array 
             return (tags.includes(selectedTag))
         })
+        // call set hook and pass filtered array to populate filteredPhotoTags state
         setFilteredPhotoTags(subset)
     }, [selectedTag])
 
         return (
             <>
                 <main>
-                    {/* <h1>CategoryPage.js will show the categories drop-down and search bar</h1> */}
-    
                     <div>
                         {/* tag drop-down */}
                         <label htmlFor="tag-select">Choose a tag:</label>
@@ -60,7 +62,7 @@ export const CategoryList = () => {
                                 return <>
                                     <div>
                                         <p key={photo.id} value={photo.id}>
-                                            ternary is true selectedTag !== 0 
+                                            {/* ternary is true selectedTag !== 0  */}
                                             <img src={photo.imageUrl} alt="A favorited photo"></img>{<br />}
                                             Title: {photo.title}{<br />}
                                             Notes: {photo.noteText}{<br />}
