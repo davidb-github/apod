@@ -57,11 +57,11 @@ export const ApodProvider = (props) => {
         return fetch(`http://localhost:8088/photos/${photoId}`, {
             method: "DELETE"
         })
-        // hack to work around json-server returning get ahead of delete photo
+        // hack to work around json-server returning get ahead of delete photo completion
             .then(response => {
                 setTimeout(() => {
                     getPhotos(currentUser)
-                }, 1000)
+                }, 500)
                 
             })
             

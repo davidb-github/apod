@@ -47,7 +47,7 @@ export const CategoryList = () => {
                         <label htmlFor="tag-select">Choose a tag:</label>
     
                         <select name="tags" id="tag-select" onChange={(e) => { setSelectedTag(+e.target.value) }}>
-                            <option value="0">--Please choose an option--</option>
+                            <option value="0">--Choose/Remove tag filters--</option>
                                 ${tags.map(tag => (<option key={tag.id} value={tag.id}>
                                 {tag.tag}
                             </option>))}
