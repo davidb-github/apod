@@ -53,17 +53,17 @@ export const CategoryList = () => {
                             </option>))}
                         </select>
                     </div>
-    
+
                     <section>
                     {selectedTag !== 0
-                        ? filteredPhotoTags.map(photo => {
-                                                        
-                            // photo = photo.photo
+                        ? filteredPhotoTags.map(photo => {                          
                                 return <>
                                     <div>
                                         <p key={photo.id} value={photo.id}>
-                                            Title: {photo.title}{"\n"}
-                                            <img src={photo.imageUrl} alt="A favorited photo"></img>
+                                            ternary is true selectedTag !== 0 
+                                            <img src={photo.imageUrl} alt="A favorited photo"></img>{<br />}
+                                            Title: {photo.title}{<br />}
+                                            Notes: {photo.noteText}{<br />}
                                         </p>
                                         <button
                                             onClick={() => {
@@ -74,13 +74,16 @@ export const CategoryList = () => {
                                 </>
                         })
                         : photos.map(photo => {
-                                                 
+                                console.log(photo)                 
                             // photo = photo.photo
+                            
                                 return <>
                                     <div key={photo.id} value={photo.id}>
                                         <p>
-                                            Title: {photo.title}{"\n"}
-                                            <img src={photo.imageUrl} alt="A favorited photo"></img>
+                                        ternary is False                
+                                            <img src={photo.imageUrl} alt="A favorited photo"></img>{<br />}
+                                            Title: {photo.title}{<br />}
+                                            Notes: {photo.noteText}{<br />}
                                         </p>
                                         <button
                                             onClick={() => {
