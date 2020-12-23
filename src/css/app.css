@@ -14,3 +14,20 @@ body {
   margin: 0;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.mainContainer {
+  padding: 20px;
+}
+
+.card--actions {
+  margin-top: -200px;
+}
+
+.card--actions__tag {
+  margin-bottom: 20px;
+}
+
+
