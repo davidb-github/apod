@@ -80,13 +80,12 @@ export const CategoryList = () => {
                             // photo = photo.photo
                             
                                 return <>
-                                    <div key={photo.id} value={photo.id}>
-                                        <p>
-                                        ternary is False                
+                                    <div className="photo" key={photo.id} value={photo.id}>
+                                        <span className="photo--card">
                                             <img src={photo.imageUrl} alt="A favorited photo"></img>{<br />}
                                             Title: {photo.title}{<br />}
                                             Notes: {photo.noteText}{<br />}
-                                        </p>
+                                            </span>
                                         <button
                                             onClick={() => {
                                                 deletePhoto(photo.id)
