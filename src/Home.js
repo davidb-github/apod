@@ -7,7 +7,7 @@ export const Home = () => {
 
     return (
         <>
-            <main>
+            <main className="mainContainer">
                 {/* <h1>Welcome to Home.js</h1> */}
                 <h1>Astronomy Picture of the Day</h1>
 

@@ -14,3 +14,11 @@ body {
   margin: 0;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.mainContainer {
+  padding: 20px;
+}
+

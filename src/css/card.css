@@ -1,0 +1,18 @@
+.card {
+    flex: 1;
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.card--details {
+flex: 1;
+margin-right: 20px;
+}
+
+.card--image {
+flex: 1;
+}
+
+img {
+    width: 100%;
+}

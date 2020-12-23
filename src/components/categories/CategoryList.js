@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { TagContext } from '../tags/TagProvider'
 import { ApodContext } from '../photos/PhotoProvider'
 import Search from '../search/Search'
+import FavoritesCard from "../card/FavoritesCard"
 
 export const CategoryList = () => {
 
@@ -92,52 +93,20 @@ export const CategoryList = () => {
                             {tag.tag}
                         </option>))}
                     </select>
-
                     <Search />
-
                 </div>
 
-                <section>
+                <div className="container">
                     {selectedTag !== 0 || (searchTerm)
                         ? filteredPhotoTags.map(photo => {
-                            return <>
-                                <div>
-                                    <p key={photo.id} value={photo.id}>
-                                        {/* ternary is true selectedTag !== 0  */}
-                                        <img src={photo.imageUrl} alt="A favorited photo"></img>{<br />}
-                                            Title: {photo.title}{<br />}
-                                            Notes: {photo.noteText}{<br />}
-                                    </p>
-                                    <button
-                                        onClick={() => {
-                                            deletePhoto(photo.id)
-                                        }}>
-                                        Delete Photo</button>
-                                </div>
-                            </>
+                            return <FavoritesCard photo={photo} deletePhoto={deletePhoto} />
                         })
                         : photos.map(photo => {
                             // console.log(photo)
-                            return <>
-                                <div className="photo" key={photo.id} value={photo.id}>
-                                    <span className="photo--card">
-                                        <img src={photo.imageUrl} alt="A favorited photo"></img>{<br />}
-                                            Title: {photo.title}{<br />}
-                                            Notes: {photo.noteText}{<br />}
-                                    </span>
-                                    <button
-                                        onClick={() => {
-                                            deletePhoto(photo.id)
-                                        }}>
-                                        Delete Photo</button>
-                                </div>
-                            </>
+                            return <FavoritesCard photo={photo} deletePhoto={deletePhoto} />
                         })}
-                </section>
-
+                </div>
             </main>
         </>
     )
 }
-
-

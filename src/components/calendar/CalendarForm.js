@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ApodContext } from "../photos/PhotoProvider"
 import { TagContext } from '../tags/TagProvider'
+import Card from '../card/Card'
 
 
 export const CalendarForm = () => {
@@ -116,28 +117,8 @@ export const CalendarForm = () => {
                         </button>
                     </div>
 
-                    {/* Photo for selected day goes in this div */}
-                    <div className="apod">
-                        {
-                            <section>
-                                <div>
-                                    <p>Title: {apodByDate.title}</p>
-                                    <p>Date : {apodByDate.date}</p>
-                                </div>
-                                <div>
-                                    {apodByDate.media_type === 'video' 
-                                    ? <div>
-                                        Note: The media for the seleted date is external video. <br/>
-                                        External URL: <a href={apodByDate.url} target="_blank">Click to see Youtube Video</a></div>
-                                    : <img src={apodByDate.url} alt="apod"></img>} 
-                                </div>
-                                <div>
-                                    <p>Description: {apodByDate.explanation}</p>
-                                </div>
-                            </section>
-                            // console.log("PhotoList executed and we are inside the return", apod.title) && <h1>Hello World</h1>
-                        }
-                    </div >
+                    <Card photo = {apodByDate}/>
+                    
                 </article>
             </main>
         </>

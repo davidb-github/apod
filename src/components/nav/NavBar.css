@@ -2,9 +2,22 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    border-bottom: 1px solid #c2c2c2;
+    padding-left: 20px;
 }
 
 .navbar__item {
-    flex-basis: 20%;
+    flex-basis: 25%;
     list-style-type: none;
+    text-decoration: none;
+}
+
+.navbar__item a {
+    text-decoration: none;
+}
+
+.navbar__btn {
+    padding-bottom: 10px;
+    padding-right: 20px;
+    float: right;
 }
