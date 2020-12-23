@@ -17,6 +17,30 @@ export const CategoryList = () => {
     // grab userId from localStorage
     const currentUser = parseInt(localStorage.getItem("app_user_id"))
 
+    const filterByTag = (photos) => {
+        return photos.filter(photo => {
+            // mapping all tags assigned to photo to the tags array
+            let tags = photo.photoTags.map(photoTag => photoTag.tagId)
+            // if selectedTag is included then add to subset array 
+
+            return (tags.includes(selectedTag))
+        })
+    }
+
+
+    const filterByTerm = (photos) => {
+        let lowerSearchTerm = ''
+        let lowerPhotoTitle = ''
+
+        return photos.filter(photo => {
+            lowerSearchTerm = searchTerm.toLowerCase()
+            lowerPhotoTitle = photo.title.toLowerCase()
+
+            return lowerPhotoTitle.includes(lowerSearchTerm)
+        })
+    }
+
+
     // onMount
     useEffect(() => {
         getTags()
@@ -33,49 +57,24 @@ export const CategoryList = () => {
 
     useEffect(() => {
         let searchResults
-        let lowerSearchTerm = ''
-        let lowerPhotoTitle = ''
+
 
         if (selectedTag !== 0 && searchTerm !== "") {
-            searchResults = filteredPhotoTags.filter(photo => {
-                console.log("PHOTO ", photo)
-                lowerSearchTerm = searchTerm.toLowerCase()
-                lowerPhotoTitle = photo.title.toLowerCase()
-
-                return lowerPhotoTitle.includes(lowerSearchTerm)
-            })
+            searchResults = filterByTerm(filteredPhotoTags)
         }
         else if (searchTerm === "" && selectedTag !== 0) {
-            searchResults = photos.filter(photo => {
-                // mapping all tags assigned to photo to the tags array
-                let tags = photo.photoTags.map(photoTag => photoTag.tagId)
-                // if selectedTag is included then add to subset array 
-                
-                return (tags.includes(selectedTag))
-            })
+            searchResults = filterByTag(photos)
         }
         else {
-            searchResults = photos.filter(photo => {
-                lowerSearchTerm = searchTerm.toLowerCase()
-                lowerPhotoTitle = photo.title.toLowerCase()
-
-                return lowerPhotoTitle.includes(lowerSearchTerm)
-            })
+            searchResults = filterByTerm(photos)
         }
-        console.log("searchTerm: ", searchTerm)
-
         setFilteredPhotoTags(searchResults)
     }, [searchTerm])
 
 
     useEffect(() => {
         //filter photos by tags assigned to photo
-        const subset = photos.filter(photo => {
-            // mapping all tags assigned to photo to the tags array
-            let tags = photo.photoTags.map(photoTag => photoTag.tagId)
-            // if selectedTag is included then add to subset array 
-            return (tags.includes(selectedTag))
-        })
+        const subset = filterByTag(photos)
         // call set hook and pass filtered array to populate filteredPhotoTags state
         setFilteredPhotoTags(subset)
     }, [selectedTag])
