@@ -2,14 +2,17 @@
 import React, { useState, useContext, useEffect } from "react"
 import { TagContext } from '../tags/TagProvider'
 import { ApodContext } from '../photos/PhotoProvider'
+import Search from '../search/Search'
 
 export const CategoryList = () => {
 
     const [selectedTag, setSelectedTag]             = useState(0)
     const [filteredPhotoTags, setFilteredPhotoTags] = useState([])
 
-    const { tags, getTags, photoTags, getPhotoTagsExpand } = useContext(TagContext)
-    const { photos, getPhotos, deletePhoto }               = useContext(ApodContext)
+    const { tags, getTags, getPhotoTagsExpand } = useContext(TagContext)
+    const { photos, getPhotos, deletePhoto, searchTerm }   = useContext(ApodContext)
+
+
 
     // grab userId from localStorage
     const currentUser = parseInt(localStorage.getItem("app_user_id"))
@@ -27,6 +30,23 @@ export const CategoryList = () => {
     useEffect(() => {
         getPhotos(currentUser)
     }, [])
+
+    useEffect(() => {
+        let lowerSearchTerm = ''
+        let lowerPhotoTitle = ''
+
+        console.log("searchTerm: ", searchTerm)
+        const searchResults = photos.filter(photo => {
+            // place in searchResults if true
+            console.log("adfadsf", photo.title.includes(searchTerm), photo)
+            lowerSearchTerm = searchTerm.toLowerCase()
+            lowerPhotoTitle = photo.title.toLowerCase()
+
+            return lowerPhotoTitle.includes(lowerSearchTerm)
+
+        })
+        setFilteredPhotoTags(searchResults)
+    }, [searchTerm])
 
 
     useEffect(() => {
@@ -54,10 +74,13 @@ export const CategoryList = () => {
                                 {tag.tag}
                             </option>))}
                         </select>
-                    </div>
+                        
+                        <Search />
 
+                    </div>
+                    
                     <section>
-                    {selectedTag !== 0
+                    {selectedTag !== 0 || (searchTerm)
                         ? filteredPhotoTags.map(photo => {                          
                                 return <>
                                     <div>
@@ -76,9 +99,7 @@ export const CategoryList = () => {
                                 </>
                         })
                         : photos.map(photo => {
-                                console.log(photo)                 
-                            // photo = photo.photo
-                            
+                                // console.log(photo)
                                 return <>
                                     <div className="photo" key={photo.id} value={photo.id}>
                                         <span className="photo--card">

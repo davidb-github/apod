@@ -11,6 +11,7 @@ export const ApodProvider = (props) => {
     // set state for ext API data
     const [apod, setApod] = useState({})
     const [apodByDate, setApodByDate] = useState({})
+    const [searchTerm, setSearchTerm] = useState("")
     // set state for local photo data
     const [photos, setPhotos] = useState([])
 
@@ -73,7 +74,7 @@ export const ApodProvider = (props) => {
                 apod, setApod, getApod,
                 photos, setPhotos, getPhotos,
                 addPhoto, getApodByDate, apodByDate,
-                deletePhoto
+                deletePhoto, searchTerm, setSearchTerm
             }
         }>
             {props.children}

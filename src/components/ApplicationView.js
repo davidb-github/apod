@@ -33,15 +33,6 @@ export const ApplicationViews = (props) => {
                     </Route>
                 </TagProvider>
             </ApodProvider>
-
-            <ApodProvider>
-                <TagProvider>
-                    {/* Render the categories elements on the favorites page when http://localhost:3000/categories */}
-                    <Route path="/categories">
-                        <CategoryList />
-                    </Route>
-                    </TagProvider>
-            </ApodProvider>
         </>
     )
 }
