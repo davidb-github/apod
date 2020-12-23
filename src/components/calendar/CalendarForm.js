@@ -68,12 +68,13 @@ export const CalendarForm = () => {
         setSelectedTag(0)
         setNoteText("")
         setUserMessage("Photo Saved")
-        setTimeout(() => {setUserMessage("")}, 2000)
+        setTimeout(() => { setUserMessage("") }, 2000)
     }
 
     return (
         <>
-            <main>
+            <main className="mainContainer">
+            <h1>Astronomy Photo of the Day</h1>
                 <article>
                     {/* <h1>Welcome to CalendarForm.js</h1> */}
                     <p>{userMessage && userMessage}</p>
@@ -87,38 +88,40 @@ export const CalendarForm = () => {
                         </input>
                     </div>
 
-                    <div>
-                        {/* tag drop-down */}
-                        <label htmlFor="tag-select">Choose a tag:</label>
+                    <Card photo={apodByDate} />
 
-                        <select value={selectedTag} name="tags" id="tag-select" onChange={(e) => { setSelectedTag(e.target.value) }}>
-                            <option value="0">--Choose/Remove tag filters--</option>
+                    <div className="card--actions">
+                        <div className="card--actions__tag">
+                            {/* tag drop-down */}
+                            <label htmlFor="tag-select">Choose a tag:</label><br/>
+
+                            <select value={selectedTag} name="tags" id="tag-select" onChange={(e) => { setSelectedTag(e.target.value) }}>
+                                <option value="0">--Choose/Remove tag filters--</option>
                             ${tags.map(tag => (<option key={tag.id} value={tag.id}>
-                                {tag.tag}
-                            </option>))}
-                        </select>
-                    </div>
+                                    {tag.tag}
+                                </option>))}
+                            </select>
+                        </div>
 
-                    <div>
-                        {/* Text box */}
-                        <label htmlFor="apod-note">Add Note: </label>
+                        <div>
+                            {/* Text box */}
+                            <label htmlFor="apod-note">Add Note: </label><br/>
 
-                        <textarea value={noteText} id="note" name="note"
-                            rows="5" cols="33" onChange={(e) => { setNoteText(e.target.value) }}>
-                        </textarea>
-                    </div>
+                            <textarea value={noteText} id="note" name="note"
+                                rows="5" cols="70" onChange={(e) => { setNoteText(e.target.value) }}>
+                            </textarea>
+                        </div>
 
 
-                    <div>
-                        {/* Save Photo to favorites */}
-                        <button onClick={handleSaveFavs}
-                            type="button">
-                            Save to Favorites
+                        <div>
+                            {/* Save Photo to favorites */}
+                            <button onClick={handleSaveFavs}
+                                type="button">
+                                Save to Favorites
                         </button>
+                        </div>
                     </div>
 
-                    <Card photo = {apodByDate}/>
-                    
                 </article>
             </main>
         </>
