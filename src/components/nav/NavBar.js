@@ -14,9 +14,6 @@ export const NavBar = (props) => {
             <li className="navbar__item">
                 <Link className="navbar__link" to="/favorites">Favorites</Link>
             </li>
-            {/* <li className="navbar__item">
-                <Link className="navbar__link" to="/Categories">Categories</Link>
-            </li> */}
 
             <li className="navbar__item">
                 <Link className="navbar__link" to="/" ><button onClick={() => {

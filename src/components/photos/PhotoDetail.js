@@ -28,10 +28,9 @@ export const PhotoDetail = () => {
                         {/* {console.log(apod.url)} */}
                     </div>
                     <div>
-                        <p>Description: {apod.explanation}</p>
+                        <p>Description: {<br />} {apod.explanation}</p>
                     </div>
                 </section>
-                // console.log("PhotoList executed and we are inside the return", apod.title) && <h1>Hello World</h1>
             }
         </div >
     )
