@@ -22,12 +22,51 @@ body {
   padding: 20px;
 }
 
+
+.listContainer {
+  display: flex;
+  }
+
+.listActions {
+display: flex;
+height: 30px;
+width: 400px;
+margin-bottom: 20px;
+}
+
+.selectBox {
+  height: 30px;
+  margin-right: 20px;
+}
+.searchBox {
+  height: 24px;
+}
+
+.listElement {
+  flex: 1;
+}
+
 .card--actions {
   margin-top: -200px;
 }
 
 .card--actions__tag {
   margin-bottom: 20px;
+}
+
+.notification {
+  width: 70%;
+  background-color: #c2c2c2;
+  height: 40px;
+  position: fixed;
+  z-index: 30;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 25px;
 }
 
 
