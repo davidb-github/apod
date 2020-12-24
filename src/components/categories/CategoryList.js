@@ -4,16 +4,24 @@ import { TagContext } from '../tags/TagProvider'
 import { ApodContext } from '../photos/PhotoProvider'
 import Search from '../search/Search'
 import FavoritesCard from "../card/FavoritesCard"
+import { findAllByDisplayValue } from "@testing-library/react"
 
 export const CategoryList = () => {
 
     const [selectedTag, setSelectedTag] = useState(0)
     const [filteredPhotoTags, setFilteredPhotoTags] = useState([])
+    const [notification, setNotification] = useState({ visible: false, message: "" })
 
     const { tags, getTags, getPhotoTagsExpand } = useContext(TagContext)
     const { photos, getPhotos, deletePhoto, searchTerm } = useContext(ApodContext)
 
-
+    const handleDeletePhoto = (id) => {
+        deletePhoto(id)
+        setNotification({visible: true, message: "Photo deleted: " + id})
+        setTimeout(() => {
+            setNotification({visible: false, message: ""})
+        }, 2000)
+    }
 
     // grab userId from localStorage
     const currentUser = parseInt(localStorage.getItem("app_user_id"))
@@ -83,6 +91,12 @@ export const CategoryList = () => {
     return (
         <>
             <main className="mainContainer">
+                { notification.visible
+                    ? <div className="notification">
+                        {notification.message}
+                    </div>
+                    :null
+                }
                 <div className="listContainer">
                     <div className="listActions">
                         {/* tag drop-down */}
@@ -97,7 +111,6 @@ export const CategoryList = () => {
                         <div className="listElement">
                             <Search />
                         </div>
-
                     </div>
                 </div>
 
@@ -105,11 +118,11 @@ export const CategoryList = () => {
                 <div className="container">
                     {selectedTag !== 0 || (searchTerm)
                         ? filteredPhotoTags.map(photo => {
-                            return <FavoritesCard photo={photo} deletePhoto={deletePhoto} />
+                            return <FavoritesCard photo={photo} deletePhoto={handleDeletePhoto} />
                         })
                         : photos.map(photo => {
                             // console.log(photo)
-                            return <FavoritesCard photo={photo} deletePhoto={deletePhoto} />
+                            return <FavoritesCard photo={photo} deletePhoto={handleDeletePhoto} />
                         })}
                 </div>
             </main>
