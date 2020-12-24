@@ -1,16 +1,21 @@
 import React from 'react'
+import './favoritesCard.css'
 
 export default function FavoritesCard({ photo, deletePhoto }) {
     return (
         <>
-            <div className="card">
-                <p key={photo.id} value={photo.id}>
+            <div key={photo.id} className="favoritesCard">
+                <h3>{photo.title}</h3>
+                <div className="image-container">
                     {/* ternary is true selectedTag !== 0  */}
                     <img src={photo.imageUrl} alt="A favorited photo"></img>{<br />}
-                      Title: {photo.title}{<br />}
-                      Notes: {photo.noteText}{<br />}
-                </p>
+                </div>
+                <div className="noteContainer">
+                    {photo.noteText}{<br />}
+                </div>
+
                 <button
+                    className="btn-delete"
                     onClick={() => {
                         deletePhoto(photo.id)
                     }}>

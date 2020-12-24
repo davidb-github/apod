@@ -22,6 +22,30 @@ body {
   padding: 20px;
 }
 
+
+.listContainer {
+  display: flex;
+  }
+
+.listActions {
+display: flex;
+height: 30px;
+width: 400px;
+margin-bottom: 20px;
+}
+
+.selectBox {
+  height: 30px;
+  margin-right: 20px;
+}
+.searchBox {
+  height: 24px;
+}
+
+.listElement {
+  flex: 1;
+}
+
 .card--actions {
   margin-top: -200px;
 }

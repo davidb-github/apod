@@ -1,0 +1,37 @@
+img {
+    width: 400px;
+    
+}
+
+.favoritesCard {
+    display: flex;
+    width: 400px;
+    height: 560px;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color:#eeeeee;
+    padding: 10px;
+}
+
+.image-container {
+    height: 300px;
+    width: 400px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.image-container:hover {
+    z-index: 20;
+    overflow: visible;
+    margin-bottom: 20px;
+}
+
+.btn-delete {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.noteContainer {
+    overflow-y: scroll;
+}

@@ -82,19 +82,25 @@ export const CategoryList = () => {
 
     return (
         <>
-            <main>
-                <div>
-                    {/* tag drop-down */}
-                    <label htmlFor="tag-select">Choose a tag:</label>
+            <main className="mainContainer">
+                <div className="listContainer">
+                    <div className="listActions">
+                        {/* tag drop-down */}
+                        <div className="listElement">
+                            <select className="selectBox" name="tags" id="tag-select" onChange={(e) => { setSelectedTag(+e.target.value) }}>
+                                <option value="0">--Choose/Remove tag filters--</option>
+        ${tags.map(tag => (<option key={tag.id} value={tag.id}>
+                                    {tag.tag}
+                                </option>))}
+                            </select>
+                        </div>
+                        <div className="listElement">
+                            <Search />
+                        </div>
 
-                    <select name="tags" id="tag-select" onChange={(e) => { setSelectedTag(+e.target.value) }}>
-                        <option value="0">--Choose/Remove tag filters--</option>
-                                ${tags.map(tag => (<option key={tag.id} value={tag.id}>
-                            {tag.tag}
-                        </option>))}
-                    </select>
-                    <Search />
+                    </div>
                 </div>
+
 
                 <div className="container">
                     {selectedTag !== 0 || (searchTerm)

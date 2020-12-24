@@ -7,9 +7,10 @@ const Search = () => {
 
     return (
         <>
-            <label for="Search">Search</label>
-
-            <input onChange={e => {
+            <input
+            className="searchBox"
+            placeholder="Search Title"
+            onChange={e => {
                 // console.log("setSearchTerm: ", e.target.value)
                 setSearchTerm(e.target.value)}} value={searchTerm} type="text" id="searchTerm" name="Search"/>
         </>
